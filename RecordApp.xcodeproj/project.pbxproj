@@ -9,21 +9,40 @@
 /* Begin PBXBuildFile section */
 		C35FC9D52B3D68360036F044 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35FC9D42B3D68360036F044 /* AppDelegate.swift */; };
 		C35FC9D72B3D68360036F044 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35FC9D62B3D68360036F044 /* SceneDelegate.swift */; };
-		C35FC9D92B3D68360036F044 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35FC9D82B3D68360036F044 /* ViewController.swift */; };
-		C35FC9DC2B3D68360036F044 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C35FC9DA2B3D68360036F044 /* Main.storyboard */; };
 		C35FC9DE2B3D68370036F044 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C35FC9DD2B3D68370036F044 /* Assets.xcassets */; };
 		C35FC9E12B3D68370036F044 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C35FC9DF2B3D68370036F044 /* LaunchScreen.storyboard */; };
+		C385BFC62B3D6EE500D1FF6F /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385BFC52B3D6EE500D1FF6F /* CalendarViewController.swift */; };
+		C385BFC82B3D6F1A00D1FF6F /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385BFC72B3D6F1A00D1FF6F /* DiaryViewController.swift */; };
+		C385BFCB2B3D712700D1FF6F /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385BFCA2B3D712700D1FF6F /* UIFont+.swift */; };
+		C385BFCE2B3D71D400D1FF6F /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C385BFCD2B3D71D400D1FF6F /* Pretendard-Regular.otf */; };
+		C385BFD02B3D71E600D1FF6F /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C385BFCF2B3D71E600D1FF6F /* Pretendard-Bold.otf */; };
+		C385BFD22B3D71FA00D1FF6F /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C385BFD12B3D71FA00D1FF6F /* Pretendard-Medium.otf */; };
+		C385BFD42B3D749F00D1FF6F /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385BFD32B3D749F00D1FF6F /* UILabel+.swift */; };
+		C3B4DED12B3E87DE00660E57 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = C3B4DED02B3E87DE00660E57 /* FSCalendar */; };
+		C3B4DED42B3E88CD00660E57 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C3B4DED32B3E88CD00660E57 /* SnapKit */; };
+		C3B4DED62B3E88CD00660E57 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = C3B4DED52B3E88CD00660E57 /* SnapKit-Dynamic */; };
+		C3B4DEDA2B3E93D200660E57 /* Prata-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3B4DED92B3E93D200660E57 /* Prata-Regular.ttf */; };
+		C3B4DEDC2B3E93E300660E57 /* PT Mono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3B4DEDB2B3E93E300660E57 /* PT Mono.ttf */; };
+		C3B4DEDE2B3E94A900660E57 /* PT Mono Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3B4DEDD2B3E94A900660E57 /* PT Mono Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C35FC9D12B3D68360036F044 /* RecordApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecordApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C35FC9D42B3D68360036F044 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C35FC9D62B3D68360036F044 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C35FC9D82B3D68360036F044 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C35FC9DB2B3D68360036F044 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C35FC9DD2B3D68370036F044 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C35FC9E02B3D68370036F044 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C35FC9E22B3D68370036F044 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C385BFC52B3D6EE500D1FF6F /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		C385BFC72B3D6F1A00D1FF6F /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
+		C385BFCA2B3D712700D1FF6F /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
+		C385BFCD2B3D71D400D1FF6F /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		C385BFCF2B3D71E600D1FF6F /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		C385BFD12B3D71FA00D1FF6F /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
+		C385BFD32B3D749F00D1FF6F /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
+		C3B4DED92B3E93D200660E57 /* Prata-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Prata-Regular.ttf"; path = "../../../../../../Downloads/prata/Prata-Regular.ttf"; sourceTree = "<group>"; };
+		C3B4DEDB2B3E93E300660E57 /* PT Mono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PT Mono.ttf"; sourceTree = "<group>"; };
+		C3B4DEDD2B3E94A900660E57 /* PT Mono Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PT Mono Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +50,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3B4DED12B3E87DE00660E57 /* FSCalendar in Frameworks */,
+				C3B4DED42B3E88CD00660E57 /* SnapKit in Frameworks */,
+				C3B4DED62B3E88CD00660E57 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +62,9 @@
 		C35FC9C82B3D68360036F044 = {
 			isa = PBXGroup;
 			children = (
+				C3B4DEDF2B3EA1A500660E57 /* App */,
+				C385BFC92B3D710B00D1FF6F /* Extension */,
+				C385BFC12B3D6D8300D1FF6F /* Resources */,
 				C35FC9D32B3D68360036F044 /* RecordApp */,
 				C35FC9D22B3D68360036F044 /* Products */,
 			);
@@ -56,15 +81,68 @@
 		C35FC9D32B3D68360036F044 /* RecordApp */ = {
 			isa = PBXGroup;
 			children = (
-				C35FC9D42B3D68360036F044 /* AppDelegate.swift */,
-				C35FC9D62B3D68360036F044 /* SceneDelegate.swift */,
-				C35FC9D82B3D68360036F044 /* ViewController.swift */,
-				C35FC9DA2B3D68360036F044 /* Main.storyboard */,
-				C35FC9DD2B3D68370036F044 /* Assets.xcassets */,
-				C35FC9DF2B3D68370036F044 /* LaunchScreen.storyboard */,
-				C35FC9E22B3D68370036F044 /* Info.plist */,
+				C385BFC42B3D6EAD00D1FF6F /* Calendar */,
+				C385BFC32B3D6EA200D1FF6F /* Diary */,
 			);
 			path = RecordApp;
+			sourceTree = "<group>";
+		};
+		C385BFC12B3D6D8300D1FF6F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C385BFCC2B3D71A700D1FF6F /* Fonts */,
+				C35FC9DD2B3D68370036F044 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C385BFC32B3D6EA200D1FF6F /* Diary */ = {
+			isa = PBXGroup;
+			children = (
+				C385BFC72B3D6F1A00D1FF6F /* DiaryViewController.swift */,
+			);
+			path = Diary;
+			sourceTree = "<group>";
+		};
+		C385BFC42B3D6EAD00D1FF6F /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				C385BFC52B3D6EE500D1FF6F /* CalendarViewController.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		C385BFC92B3D710B00D1FF6F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C385BFCA2B3D712700D1FF6F /* UIFont+.swift */,
+				C385BFD32B3D749F00D1FF6F /* UILabel+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		C385BFCC2B3D71A700D1FF6F /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C385BFD12B3D71FA00D1FF6F /* Pretendard-Medium.otf */,
+				C385BFCD2B3D71D400D1FF6F /* Pretendard-Regular.otf */,
+				C385BFCF2B3D71E600D1FF6F /* Pretendard-Bold.otf */,
+				C3B4DED92B3E93D200660E57 /* Prata-Regular.ttf */,
+				C3B4DEDB2B3E93E300660E57 /* PT Mono.ttf */,
+				C3B4DEDD2B3E94A900660E57 /* PT Mono Bold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		C3B4DEDF2B3EA1A500660E57 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C35FC9E22B3D68370036F044 /* Info.plist */,
+				C35FC9DF2B3D68370036F044 /* LaunchScreen.storyboard */,
+				C35FC9D62B3D68360036F044 /* SceneDelegate.swift */,
+				C35FC9D42B3D68360036F044 /* AppDelegate.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +161,11 @@
 			dependencies = (
 			);
 			name = RecordApp;
+			packageProductDependencies = (
+				C3B4DED02B3E87DE00660E57 /* FSCalendar */,
+				C3B4DED32B3E88CD00660E57 /* SnapKit */,
+				C3B4DED52B3E88CD00660E57 /* SnapKit-Dynamic */,
+			);
 			productName = RecordApp;
 			productReference = C35FC9D12B3D68360036F044 /* RecordApp.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +194,10 @@
 				Base,
 			);
 			mainGroup = C35FC9C82B3D68360036F044;
+			packageReferences = (
+				C3B4DECF2B3E87DE00660E57 /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				C3B4DED22B3E88CD00660E57 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = C35FC9D22B3D68360036F044 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,8 +213,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C35FC9E12B3D68370036F044 /* LaunchScreen.storyboard in Resources */,
+				C3B4DEDA2B3E93D200660E57 /* Prata-Regular.ttf in Resources */,
+				C3B4DEDE2B3E94A900660E57 /* PT Mono Bold.ttf in Resources */,
+				C385BFD22B3D71FA00D1FF6F /* Pretendard-Medium.otf in Resources */,
+				C385BFD02B3D71E600D1FF6F /* Pretendard-Bold.otf in Resources */,
+				C3B4DEDC2B3E93E300660E57 /* PT Mono.ttf in Resources */,
+				C385BFCE2B3D71D400D1FF6F /* Pretendard-Regular.otf in Resources */,
 				C35FC9DE2B3D68370036F044 /* Assets.xcassets in Resources */,
-				C35FC9DC2B3D68360036F044 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +230,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C35FC9D92B3D68360036F044 /* ViewController.swift in Sources */,
+				C385BFD42B3D749F00D1FF6F /* UILabel+.swift in Sources */,
+				C385BFC82B3D6F1A00D1FF6F /* DiaryViewController.swift in Sources */,
 				C35FC9D52B3D68360036F044 /* AppDelegate.swift in Sources */,
+				C385BFCB2B3D712700D1FF6F /* UIFont+.swift in Sources */,
+				C385BFC62B3D6EE500D1FF6F /* CalendarViewController.swift in Sources */,
 				C35FC9D72B3D68360036F044 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,14 +242,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C35FC9DA2B3D68360036F044 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C35FC9DB2B3D68360036F044 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C35FC9DF2B3D68370036F044 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -289,10 +376,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 347XA53QJK;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = RecordApp/Info.plist;
+				INFOPLIST_FILE = App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -317,10 +403,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 347XA53QJK;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = RecordApp/Info.plist;
+				INFOPLIST_FILE = App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -358,6 +443,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C3B4DECF2B3E87DE00660E57 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar?tab=readme-ov-file#installation";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.4;
+			};
+		};
+		C3B4DED22B3E88CD00660E57 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C3B4DED02B3E87DE00660E57 /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3B4DECF2B3E87DE00660E57 /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
+		C3B4DED32B3E88CD00660E57 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3B4DED22B3E88CD00660E57 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		C3B4DED52B3E88CD00660E57 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3B4DED22B3E88CD00660E57 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C35FC9C92B3D68360036F044 /* Project object */;
 }
