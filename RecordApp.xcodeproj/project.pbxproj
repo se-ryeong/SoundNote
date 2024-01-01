@@ -24,6 +24,8 @@
 		C3B4DEDA2B3E93D200660E57 /* Prata-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3B4DED92B3E93D200660E57 /* Prata-Regular.ttf */; };
 		C3B4DEDC2B3E93E300660E57 /* PT Mono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3B4DEDB2B3E93E300660E57 /* PT Mono.ttf */; };
 		C3B4DEDE2B3E94A900660E57 /* PT Mono Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3B4DEDD2B3E94A900660E57 /* PT Mono Bold.ttf */; };
+		C3B4DEE12B405FA900660E57 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B4DEE02B405FA900660E57 /* UIColor+.swift */; };
+		C3B4DEE32B40669300660E57 /* UIView+AddSubViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B4DEE22B40669300660E57 /* UIView+AddSubViews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		C3B4DED92B3E93D200660E57 /* Prata-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Prata-Regular.ttf"; path = "../../../../../../Downloads/prata/Prata-Regular.ttf"; sourceTree = "<group>"; };
 		C3B4DEDB2B3E93E300660E57 /* PT Mono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PT Mono.ttf"; sourceTree = "<group>"; };
 		C3B4DEDD2B3E94A900660E57 /* PT Mono Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PT Mono Bold.ttf"; sourceTree = "<group>"; };
+		C3B4DEE02B405FA900660E57 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		C3B4DEE22B40669300660E57 /* UIView+AddSubViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddSubViews.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,8 @@
 			children = (
 				C385BFCA2B3D712700D1FF6F /* UIFont+.swift */,
 				C385BFD32B3D749F00D1FF6F /* UILabel+.swift */,
+				C3B4DEE02B405FA900660E57 /* UIColor+.swift */,
+				C3B4DEE22B40669300660E57 /* UIView+AddSubViews.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -230,12 +236,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3B4DEE32B40669300660E57 /* UIView+AddSubViews.swift in Sources */,
 				C385BFD42B3D749F00D1FF6F /* UILabel+.swift in Sources */,
 				C385BFC82B3D6F1A00D1FF6F /* DiaryViewController.swift in Sources */,
 				C35FC9D52B3D68360036F044 /* AppDelegate.swift in Sources */,
 				C385BFCB2B3D712700D1FF6F /* UIFont+.swift in Sources */,
 				C385BFC62B3D6EE500D1FF6F /* CalendarViewController.swift in Sources */,
 				C35FC9D72B3D68360036F044 /* SceneDelegate.swift in Sources */,
+				C3B4DEE12B405FA900660E57 /* UIColor+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
