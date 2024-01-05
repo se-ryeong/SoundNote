@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIFont {
+    
     class var title: UIFont {
         return pretendard(size: 18, weight: .regular)
     }

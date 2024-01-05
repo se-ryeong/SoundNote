@@ -49,7 +49,7 @@ final class DiaryViewController : UIViewController {
         button.backgroundColor = UIColor(named: "Color")
         button.layer.cornerRadius = 25
         button.layer.shadowColor = UIColor.lightGray.cgColor
-        button.layer.shadowOpacity = 0.5
+        button.layer.shadowOpacity = 0.3
         button.layer.shadowOffset = CGSize(width: 1, height: 2)
         
         return button
