@@ -38,6 +38,8 @@ final class DiaryViewController : UIViewController {
         let textView = UITextView()
         textView.backgroundColor = UIColor(named: "Color")
         textView.layer.cornerRadius = 10
+        textView.layer.borderColor = UIColor.systemGray5.cgColor
+        textView.layer.borderWidth = 0.5
         
         return textView
     }()
@@ -47,10 +49,9 @@ final class DiaryViewController : UIViewController {
         button.setTitle("녹음하기", for: .normal)
         button.setTitleColor(UIColor(named: "Color2"), for: .normal)
         button.backgroundColor = UIColor(named: "Color")
-        button.layer.cornerRadius = 25
-        button.layer.shadowColor = UIColor.lightGray.cgColor
-        button.layer.shadowOpacity = 0.3
-        button.layer.shadowOffset = CGSize(width: 1, height: 2)
+        button.layer.cornerRadius = 15
+        button.layer.borderColor = UIColor.systemGray5.cgColor
+        button.layer.borderWidth = 0.5
         
         return button
     }()
@@ -83,16 +84,15 @@ final class DiaryViewController : UIViewController {
         
         textView.snp.makeConstraints {
             $0.top.equalTo(subTitleLabel.snp.bottom).offset(24)
-            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(32)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-32)
-            $0.height.equalTo(500)
+            $0.horizontalEdges.equalToSuperview().inset(32)
         }
         
         recordButton.snp.makeConstraints {
-            $0.top.equalTo(textView.snp.bottom).offset(20)
+            $0.top.equalTo(textView.snp.bottom).offset(18)
             $0.centerX.equalToSuperview()
-            $0.height.equalTo(50)
+//            $0.height.equalTo(50)
             $0.width.equalTo(130)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-12)
         }
     }
 }
