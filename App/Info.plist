@@ -4,12 +4,12 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Pretendard-Medium</string>
-		<string>Pretendard-Bold</string>
-		<string>Pretendard-Regular</string>
-		<string>Prata-Regular</string>
-		<string>PT Mono</string>
-		<string>PT Mono Bold</string>
+		<string>Pretendard-Medium.otf</string>
+		<string>Pretendard-Bold.otf</string>
+		<string>Pretendard-Regular.otf</string>
+		<string>Prata-Regular.ttf</string>
+		<string>PT Mono.ttf</string>
+		<string>PT Mono Bold.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

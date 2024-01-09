@@ -29,7 +29,7 @@ final class DiaryViewController : UIViewController {
         label.text = "오늘의 감정을\n기록해 보세요"
         label.numberOfLines = 2
         label.textColor = .black
-        label.font = UIFont(name: "Pretendard-Regular", size: 18)
+        label.font = .title
         
         return label
     }()
