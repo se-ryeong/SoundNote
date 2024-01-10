@@ -11,6 +11,9 @@
 		C35FC9D72B3D68360036F044 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35FC9D62B3D68360036F044 /* SceneDelegate.swift */; };
 		C35FC9DE2B3D68370036F044 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C35FC9DD2B3D68370036F044 /* Assets.xcassets */; };
 		C35FC9E12B3D68370036F044 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C35FC9DF2B3D68370036F044 /* LaunchScreen.storyboard */; };
+		C372BD722B4D562B00A0C4AA /* SpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C372BD712B4D562B00A0C4AA /* SpeechViewController.swift */; };
+		C372BD742B4EF30C00A0C4AA /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C372BD732B4EF30C00A0C4AA /* Localizable.xcstrings */; };
+		C372BD762B4EF39700A0C4AA /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C372BD752B4EF39700A0C4AA /* String+.swift */; };
 		C385BFC62B3D6EE500D1FF6F /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385BFC52B3D6EE500D1FF6F /* CalendarViewController.swift */; };
 		C385BFC82B3D6F1A00D1FF6F /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385BFC72B3D6F1A00D1FF6F /* DiaryViewController.swift */; };
 		C385BFCB2B3D712700D1FF6F /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385BFCA2B3D712700D1FF6F /* UIFont+.swift */; };
@@ -35,6 +38,9 @@
 		C35FC9DD2B3D68370036F044 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C35FC9E02B3D68370036F044 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C35FC9E22B3D68370036F044 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C372BD712B4D562B00A0C4AA /* SpeechViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechViewController.swift; sourceTree = "<group>"; };
+		C372BD732B4EF30C00A0C4AA /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		C372BD752B4EF39700A0C4AA /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		C385BFC52B3D6EE500D1FF6F /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		C385BFC72B3D6F1A00D1FF6F /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
 		C385BFCA2B3D712700D1FF6F /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
@@ -104,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				C385BFC72B3D6F1A00D1FF6F /* DiaryViewController.swift */,
+				C372BD712B4D562B00A0C4AA /* SpeechViewController.swift */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -123,6 +130,7 @@
 				C385BFD32B3D749F00D1FF6F /* UILabel+.swift */,
 				C3B4DEE02B405FA900660E57 /* UIColor+.swift */,
 				C3B4DEE22B40669300660E57 /* UIView+AddSubViews.swift */,
+				C372BD752B4EF39700A0C4AA /* String+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -147,6 +155,7 @@
 				C35FC9DF2B3D68370036F044 /* LaunchScreen.storyboard */,
 				C35FC9D62B3D68360036F044 /* SceneDelegate.swift */,
 				C35FC9D42B3D68360036F044 /* AppDelegate.swift */,
+				C372BD732B4EF30C00A0C4AA /* Localizable.xcstrings */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -198,6 +207,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = C35FC9C82B3D68360036F044;
 			packageReferences = (
@@ -226,6 +236,7 @@
 				C3B4DEDC2B3E93E300660E57 /* PT Mono.ttf in Resources */,
 				C385BFCE2B3D71D400D1FF6F /* Pretendard-Regular.otf in Resources */,
 				C35FC9DE2B3D68370036F044 /* Assets.xcassets in Resources */,
+				C372BD742B4EF30C00A0C4AA /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,8 +249,10 @@
 			files = (
 				C3B4DEE32B40669300660E57 /* UIView+AddSubViews.swift in Sources */,
 				C385BFD42B3D749F00D1FF6F /* UILabel+.swift in Sources */,
+				C372BD762B4EF39700A0C4AA /* String+.swift in Sources */,
 				C385BFC82B3D6F1A00D1FF6F /* DiaryViewController.swift in Sources */,
 				C35FC9D52B3D68360036F044 /* AppDelegate.swift in Sources */,
+				C372BD722B4D562B00A0C4AA /* SpeechViewController.swift in Sources */,
 				C385BFCB2B3D712700D1FF6F /* UIFont+.swift in Sources */,
 				C385BFC62B3D6EE500D1FF6F /* CalendarViewController.swift in Sources */,
 				C35FC9D72B3D68360036F044 /* SceneDelegate.swift in Sources */,
@@ -311,7 +324,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -365,7 +378,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

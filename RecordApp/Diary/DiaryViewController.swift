@@ -11,14 +11,14 @@ import SnapKit
 final class DiaryViewController : UIViewController {
     
     private var cancelButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.setImage(UIImage(named: "Cancel"), for: .normal)
         
         return button
     }()
     
     private var saveButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.setImage(UIImage(named: "Save"), for: .normal)
         
         return button
@@ -26,7 +26,7 @@ final class DiaryViewController : UIViewController {
     
     private var subTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "오늘의 감정을\n기록해 보세요"
+        label.text = "Record your feelings today".localized
         label.numberOfLines = 2
         label.textColor = .black
         label.font = .title
@@ -45,8 +45,8 @@ final class DiaryViewController : UIViewController {
     }()
     
     private var recordButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("녹음하기", for: .normal)
+        let button = UIButton(type: .system)
+        button.setTitle("record".localized, for: .normal)
         button.setTitleColor(UIColor(named: "Color2"), for: .normal)
         button.backgroundColor = UIColor(named: "Color")
         button.layer.cornerRadius = 15
@@ -96,3 +96,4 @@ final class DiaryViewController : UIViewController {
         }
     }
 }
+
