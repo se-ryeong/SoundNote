@@ -10,7 +10,7 @@ import FSCalendar
 
 class CalendarViewController: UIViewController {
     
-    private var textView: UITextView = {
+    var textView: UITextView = {
         let textView = UITextView()
         textView.backgroundColor = UIColor(named: "Color")
         textView.layer.cornerRadius = 10
@@ -141,3 +141,5 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         return appearance.titleDefaultColor
     }
 }
+
+//extension CalendarViewController: Diary

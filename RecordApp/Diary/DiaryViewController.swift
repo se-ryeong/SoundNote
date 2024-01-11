@@ -11,6 +11,8 @@ import Speech
 
 final class DiaryViewController : UIViewController {
     
+    var calendarViewController: CalendarViewController?
+    
     private var subTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Record your feelings today".localized
@@ -21,14 +23,22 @@ final class DiaryViewController : UIViewController {
         return label
     }()
     
-    private var textView: UITextView = {
-        let textView = UITextView()
-        textView.backgroundColor = UIColor(named: "Color")
-        textView.layer.cornerRadius = 10
-        textView.layer.borderColor = UIColor.systemGray5.cgColor
-        textView.layer.borderWidth = 0.5
+    private var recordFrameView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(named: "Color")
+        view.layer.cornerRadius = 10
+        view.layer.borderColor = UIColor.systemGray5.cgColor
+        view.layer.borderWidth = 0.5
         
-        return textView
+        return view
+    }()
+    
+    private var textView: UITextView = {
+        let view = UITextView()
+        view.backgroundColor = .clear
+        view.font = .body1
+        
+        return view
     }()
     
     private var recordButton: UIButton = {
@@ -77,7 +87,6 @@ final class DiaryViewController : UIViewController {
     }()
     
     @objc private func calendarButtonTapped(_ sender: UIButton) {
-        // CalendarViewController를 초기화하고 네비게이션 컨트롤러에 푸시(push)하는 예시
         let calendarVC = CalendarViewController()
         self.navigationController?.pushViewController(calendarVC, animated: true)
         
@@ -92,7 +101,6 @@ final class DiaryViewController : UIViewController {
         speechRecognizer?.delegate = self
         recordButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         
-        textView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -111,22 +119,24 @@ final class DiaryViewController : UIViewController {
     }
     
     func setUI() {
-        view.addSubviews([subTitleLabel, textView, recordButton, calendarButton, searchButton, dateLabel])
+        view.addSubviews([subTitleLabel, recordFrameView, recordButton, calendarButton, searchButton])
+        recordFrameView.addSubviews([dateLabel, textView])
     }
     
     func setLayout() {
+        subTitleLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
         subTitleLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(24)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(32)
         }
         
-        textView.snp.makeConstraints {
+        recordFrameView.snp.makeConstraints {
             $0.top.equalTo(subTitleLabel.snp.bottom).offset(24)
             $0.horizontalEdges.equalToSuperview().inset(32)
         }
         
         recordButton.snp.makeConstraints {
-            $0.top.equalTo(textView.snp.bottom).offset(18)
+            $0.top.equalTo(recordFrameView.snp.bottom).offset(18)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(130)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-100)
@@ -145,9 +155,16 @@ final class DiaryViewController : UIViewController {
             $0.height.width.equalTo(50)
         }
         
+        dateLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
         dateLabel.snp.makeConstraints {
-            $0.top.equalTo(textView.snp.top).offset(12)
+            $0.top.equalTo(recordFrameView.snp.top).offset(12)
             $0.centerX.equalToSuperview()
+        }
+        
+        textView.snp.makeConstraints {
+            $0.top.equalTo(dateLabel.snp.bottom).offset(12)
+            $0.horizontalEdges.equalTo(recordFrameView).inset(8)
+            $0.bottom.equalTo(recordFrameView.snp.bottom).offset(-8)
         }
     }
     
@@ -252,9 +269,3 @@ extension DiaryViewController: SFSpeechRecognizerDelegate {
     }
 }
 
-extension DiaryViewController: UITextViewDelegate {
-    func textViewDidChange(_ textView: UITextView) {
-        let calendarVC = CalendarViewController()
-        
-    }
-}
