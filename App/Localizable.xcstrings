@@ -1,17 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "record" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "녹음하기"
-          }
-        }
-      }
-    },
     "Record your feelings today" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -25,6 +14,28 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "오늘의 감정을\n기록해 보세요"
+          }
+        }
+      }
+    },
+    "Recording" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "녹음하기"
+          }
+        }
+      }
+    },
+    "Stop recording" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "녹음종료"
           }
         }
       }

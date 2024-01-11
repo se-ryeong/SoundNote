@@ -33,7 +33,7 @@ final class DiaryViewController : UIViewController {
     
     private var recordButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("record".localized, for: .normal)
+        button.setTitle("Recording".localized, for: .normal)
         button.setTitleColor(UIColor(named: "Color2"), for: .normal)
         button.backgroundColor = UIColor(named: "Color")
         button.layer.cornerRadius = 20
@@ -43,10 +43,11 @@ final class DiaryViewController : UIViewController {
         return button
     }()
     
+    
     private var calendarButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "Calendar"), for: .normal)
-        button.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
+        button.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         button.layer.cornerRadius = button.layer.frame.size.width/2
         button.backgroundColor = UIColor(named: "Color3")
         button.addTarget(self, action: #selector(calendarButtonTapped), for: .touchUpInside)
@@ -57,7 +58,7 @@ final class DiaryViewController : UIViewController {
     private var searchButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "Search"), for: .normal)
-        button.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
+        button.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         button.layer.cornerRadius = button.layer.frame.size.width/2
         button.backgroundColor = UIColor(named: "Color3")
         
@@ -90,6 +91,8 @@ final class DiaryViewController : UIViewController {
         
         speechRecognizer?.delegate = self
         recordButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        
+        textView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -133,13 +136,13 @@ final class DiaryViewController : UIViewController {
         calendarButton.snp.makeConstraints {
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-32)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-20)
-            $0.height.width.equalTo(60)
+            $0.height.width.equalTo(50)
         }
         
         searchButton.snp.makeConstraints {
             $0.trailing.equalTo(calendarButton.snp.leading).offset(-12)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-20)
-            $0.height.width.equalTo(60)
+            $0.height.width.equalTo(50)
         }
         
         dateLabel.snp.makeConstraints {
@@ -164,10 +167,10 @@ final class DiaryViewController : UIViewController {
             audioEngine.stop() // 오디오 입력을 중단한다.
             recognitionRequest?.endAudio() // 음성인식도 중단
             recordButton.isEnabled = false
-            recordButton.setTitle("녹음하기", for: .normal)
+            recordButton.setTitle("Recording".localized, for: .normal)
          } else {
             startRecording()
-             recordButton.setTitle("녹음종료", for: .normal)
+             recordButton.setTitle("Stop recording".localized, for: .normal)
          }
     }
 }
@@ -217,6 +220,7 @@ extension DiaryViewController: SFSpeechRecognizerDelegate {
             if result != nil {
                 // 결과가 nil이 아니면 가장 정확한 번역을 텍스트뷰에 작성, isFinal을 true로 설정
                 self.textView.text = result?.bestTranscription.formattedString
+                
                 isFinal = (result?.isFinal)!
             }
             
@@ -245,5 +249,12 @@ extension DiaryViewController: SFSpeechRecognizerDelegate {
         } catch {
             print("audioEngine couldn't start")
         }
+    }
+}
+
+extension DiaryViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        let calendarVC = CalendarViewController()
+        
     }
 }
