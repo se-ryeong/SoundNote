@@ -10,20 +10,6 @@ import SnapKit
 
 final class DiaryViewController : UIViewController {
     
-    private var cancelButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "Cancel"), for: .normal)
-        
-        return button
-    }()
-    
-    private var saveButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "Save"), for: .normal)
-        
-        return button
-    }()
-    
     private var subTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Record your feelings today".localized
@@ -49,7 +35,7 @@ final class DiaryViewController : UIViewController {
         button.setTitle("record".localized, for: .normal)
         button.setTitleColor(UIColor(named: "Color2"), for: .normal)
         button.backgroundColor = UIColor(named: "Color")
-        button.layer.cornerRadius = 15
+        button.layer.cornerRadius = 20
         button.layer.borderColor = UIColor.systemGray5.cgColor
         button.layer.borderWidth = 0.5
         
@@ -63,22 +49,12 @@ final class DiaryViewController : UIViewController {
     }
     
     func setUI() {
-        view.addSubviews([subTitleLabel, saveButton, cancelButton, textView, recordButton])
+        view.addSubviews([subTitleLabel, textView, recordButton])
     }
     
     func setLayout() {
-        cancelButton.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(32)
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
-        }
-        
-        saveButton.snp.makeConstraints {
-            $0.trailing.equalToSuperview().offset(-32)
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
-        }
-        
         subTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(cancelButton.snp.bottom).offset(20)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(24)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(32)
         }
         
@@ -90,9 +66,9 @@ final class DiaryViewController : UIViewController {
         recordButton.snp.makeConstraints {
             $0.top.equalTo(textView.snp.bottom).offset(18)
             $0.centerX.equalToSuperview()
-//            $0.height.equalTo(50)
             $0.width.equalTo(130)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-12)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-100)
+            $0.height.equalTo(40)
         }
     }
 }
