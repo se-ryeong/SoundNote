@@ -30,11 +30,6 @@ class CalendarViewController: UIViewController {
         calendar.appearance.weekdayTextColor = .black
         calendar.placeholderType = .none // 현재 달의 날짜들만 표시되도록 설정
         
-        // header
-//        calendar.appearance.headerDateFormat = "MMM"
-//        calendar.appearance.headerTitleColor = UIColor(named: "Color3")
-//        calendar.appearance.headerTitleAlignment = .left
-        
         calendar.headerHeight = 0
         
         return calendar
@@ -46,6 +41,17 @@ class CalendarViewController: UIViewController {
         label.font = .title2
         label.text = ""
         label.textAlignment = .left
+        
+        return label
+    }()
+    
+    private var dateLabel: UILabel = {
+        let label = UILabel()
+        label.font = .title
+        label.textColor = UIColor(named: "Color1")
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM . dd"
+        label.text = formatter.string(from: Date())
         
         return label
     }()
@@ -70,7 +76,7 @@ class CalendarViewController: UIViewController {
     }
     
     func setUI() {
-        view.addSubviews([textView, calendarView, monthLabel])
+        view.addSubviews([textView, calendarView, monthLabel, dateLabel])
     }
     
     func setLayout() {
@@ -83,13 +89,18 @@ class CalendarViewController: UIViewController {
         calendarView.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(32)
             $0.top.equalTo(monthLabel.snp.bottom).offset(8)
-            $0.height.equalTo(360)
+            $0.height.equalTo(300)
         }
         
         monthLabel.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(40)
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
             $0.height.equalTo(30)
+        }
+        
+        dateLabel.snp.makeConstraints {
+            $0.top.equalTo(textView.snp.top).offset(12)
+            $0.centerX.equalToSuperview()
         }
     }
 }
