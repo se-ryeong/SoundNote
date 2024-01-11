@@ -48,10 +48,11 @@ final class DiaryViewController : UIViewController {
         button.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
         button.layer.cornerRadius = button.layer.frame.size.width/2
         button.backgroundColor = UIColor(named: "Color3")
+        button.addTarget(self, action: #selector(calendarButtonTapped), for: .touchUpInside)
         
         return button
     }()
-    
+        
     private var searchButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "Search"), for: .normal)
@@ -67,16 +68,39 @@ final class DiaryViewController : UIViewController {
         label.font = .title
         label.textColor = UIColor(named: "Color1")
         let formatter = DateFormatter()
-        formatter.dateFormat = "MM. dd"
+        formatter.dateFormat = "MM . dd"
         label.text = formatter.string(from: Date())
         
         return label
     }()
     
+    @objc private func calendarButtonTapped(_ sender: UIButton) {
+        // CalendarViewController를 초기화하고 네비게이션 컨트롤러에 푸시(push)하는 예시
+        let calendarVC = CalendarViewController()
+        self.navigationController?.pushViewController(calendarVC, animated: true)
+        
+    }
+    
     override func viewDidLoad() {
         view.backgroundColor = UIColor(named: "background")
         setUI()
         setLayout()
+        setNavigationBar()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = false
+    }
+    
+    func setNavigationBar() {
+        let backBarButtonItem = UIBarButtonItem(title: "뒤로가기", style: .plain, target: self, action: nil)
+        backBarButtonItem.tintColor = .black
+        self.navigationItem.backBarButtonItem = backBarButtonItem
+        
     }
     
     func setUI() {
