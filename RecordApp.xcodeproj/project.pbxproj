@@ -11,7 +11,6 @@
 		C35FC9D72B3D68360036F044 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35FC9D62B3D68360036F044 /* SceneDelegate.swift */; };
 		C35FC9DE2B3D68370036F044 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C35FC9DD2B3D68370036F044 /* Assets.xcassets */; };
 		C35FC9E12B3D68370036F044 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C35FC9DF2B3D68370036F044 /* LaunchScreen.storyboard */; };
-		C372BD722B4D562B00A0C4AA /* SpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C372BD712B4D562B00A0C4AA /* SpeechViewController.swift */; };
 		C372BD742B4EF30C00A0C4AA /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C372BD732B4EF30C00A0C4AA /* Localizable.xcstrings */; };
 		C372BD762B4EF39700A0C4AA /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C372BD752B4EF39700A0C4AA /* String+.swift */; };
 		C385BFC62B3D6EE500D1FF6F /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385BFC52B3D6EE500D1FF6F /* CalendarViewController.swift */; };
@@ -37,7 +36,6 @@
 		C35FC9DD2B3D68370036F044 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C35FC9E02B3D68370036F044 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C35FC9E22B3D68370036F044 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C372BD712B4D562B00A0C4AA /* SpeechViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechViewController.swift; sourceTree = "<group>"; };
 		C372BD732B4EF30C00A0C4AA /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		C372BD752B4EF39700A0C4AA /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		C385BFC52B3D6EE500D1FF6F /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -108,7 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				C385BFC72B3D6F1A00D1FF6F /* DiaryViewController.swift */,
-				C372BD712B4D562B00A0C4AA /* SpeechViewController.swift */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -248,7 +245,6 @@
 				C372BD762B4EF39700A0C4AA /* String+.swift in Sources */,
 				C385BFC82B3D6F1A00D1FF6F /* DiaryViewController.swift in Sources */,
 				C35FC9D52B3D68360036F044 /* AppDelegate.swift in Sources */,
-				C372BD722B4D562B00A0C4AA /* SpeechViewController.swift in Sources */,
 				C385BFCB2B3D712700D1FF6F /* UIFont+.swift in Sources */,
 				C385BFC62B3D6EE500D1FF6F /* CalendarViewController.swift in Sources */,
 				C35FC9D72B3D68360036F044 /* SceneDelegate.swift in Sources */,
