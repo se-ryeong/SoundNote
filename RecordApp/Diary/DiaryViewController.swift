@@ -127,89 +127,81 @@ final class DiaryViewController : UIViewController {
                 Task {
                     do {
                         let weatherData = try await self.weatherService.updateCurrentWeather(userLocation: userLocation)
-                        
+                        self.weatherState(weather: weatherData)
                         // TODO: WeatherCondition 타입을 파라미터로 받는 함수 만들어서 스위치문으로 분기해서 이미지 띄우기
                         print(weatherData.condition)
-                        switch weatherData.condition {
-                        case .clear:
-                            self.weatherImageView.image = .init(systemName: "sun.min")
-                        default:
-                            self.weatherImageView.image = .init(systemName: "rainbow")
-                            
-        //                case .blizzard:
-        //
-        //                case .blowingDust:
-        //                    <#code#>
-        //                case .blowingSnow:
-        //                    <#code#>
-        //                case .breezy:
-        //                    <#code#>
-        //                case .clear:
-        //                    weatherImageView.image = .init(systemName: "sun")
-        //                case .cloudy:
-        //                    <#code#>
-        //                case .drizzle:
-        //                    <#code#>
-        //                case .flurries:
-        //                    <#code#>
-        //                case .foggy:
-        //                    <#code#>
-        //                case .freezingDrizzle:
-        //                    <#code#>
-        //                case .freezingRain:
-        //                    <#code#>
-        //                case .frigid:
-        //                    <#code#>
-        //                case .hail:
-        //                    <#code#>
-        //                case .haze:
-        //                    <#code#>
-        //                case .heavyRain:
-        //                    <#code#>
-        //                case .heavySnow:
-        //                    <#code#>
-        //                case .hot:
-        //                    <#code#>
-        //                case .hurricane:
-        //                    <#code#>
-        //                case .isolatedThunderstorms:
-        //                    <#code#>
-        //                case .mostlyClear:
-        //                    <#code#>
-        //                case .mostlyCloudy:
-        //                    <#code#>
-        //                case .partlyCloudy:
-        //                    <#code#>
-        //                case .rain:
-        //                    <#code#>
-        //                case .scatteredThunderstorms:
-        //                    <#code#>
-        //                case .sleet:
-        //                    <#code#>
-        //                case .smoky:
-        //                    <#code#>
-        //                case .snow:
-        //                    <#code#>
-        //                case .strongStorms:
-        //                    <#code#>
-        //                case .sunFlurries:
-        //                    <#code#>
-        //                case .sunShowers:
-        //                    <#code#>
-        //                case .thunderstorms:
-        //                    <#code#>
-        //                case .tropicalStorm:
-        //                    <#code#>
-        //                case .windy:
-        //                    <#code#>
-        //                case .wintryMix:
-        //                    <#code#>
-                        }
                     } catch {
                         print(error)
                     }
                 }
             }.store(in: &store)
+    }
+    
+    func weatherState(weather: CurrentWeather) {
+        
+        switch weather.condition {
+        case .blizzard:
+            self.weatherImageView.image = .init(systemName: "wind.snow")
+        case .blowingSnow:
+            self.weatherImageView.image = .init(systemName: "wind.snow")
+        case .breezy:
+            self.weatherImageView.image = .init(systemName: "wind")
+        case .clear:
+            self.weatherImageView.image = .init(systemName: "sun")
+        case .cloudy:
+            self.weatherImageView.image = .init(systemName: "cloud")
+        case .drizzle: // 보슬 비
+            self.weatherImageView.image = .init(systemName: "cloud.rain")
+        case .flurries: // 한차례 흩뿌리는 비
+            self.weatherImageView.image = .init(systemName: "cloud.heavyrain")
+        case .foggy:
+            self.weatherImageView.image = .init(systemName: "cloud.fog")
+        case .freezingDrizzle:
+            self.weatherImageView.image = .init(systemName: "snowflake")
+        case .freezingRain:
+            self.weatherImageView.image = .init(systemName: "cloud.rain")
+        case .frigid: // 몹시 추운
+            self.weatherImageView.image = .init(systemName: "thermometer.low")
+        case .hail: // 빗발
+            self.weatherImageView.image = .init(systemName: "cloud.rain")
+        case .haze: // 안개
+            self.weatherImageView.image = .init(systemName: "cloud.fog")
+        case .heavyRain:
+            self.weatherImageView.image = .init(systemName: "cloud.heavyrain")
+        case .heavySnow:
+            self.weatherImageView.image = .init(systemName: "cloud.snow")
+        case .hot:
+            self.weatherImageView.image = .init(systemName: "sun.max")
+        case .hurricane:
+            self.weatherImageView.image = .init(systemName: "hurricane")
+        case .isolatedThunderstorms: // 고립된 천~둥
+            self.weatherImageView.image = .init(systemName: "bolt")
+        case .mostlyClear:
+            self.weatherImageView.image = .init(systemName: "sun")
+        case .mostlyCloudy:
+            self.weatherImageView.image = .init(systemName: "cloud")
+        case .partlyCloudy:
+            self.weatherImageView.image = .init(systemName: "cloud")
+        case .rain:
+            self.weatherImageView.image = .init(systemName: "cloud.rain")
+        case .scatteredThunderstorms:
+            self.weatherImageView.image = .init(systemName: "bolt")
+        case .smoky:
+            self.weatherImageView.image = .init(systemName: "smoke")
+        case .snow:
+            self.weatherImageView.image = .init(systemName: "snowflake")
+        case .strongStorms:
+            self.weatherImageView.image = .init(systemName: "tropicalstorm")
+        case .thunderstorms:
+            self.weatherImageView.image = .init(systemName: "cloud.bolt")
+        case .tropicalStorm: // 열대 폭풍우
+            self.weatherImageView.image = .init(systemName: "tropicalstorm")
+        case .windy:
+            self.weatherImageView.image = .init(systemName: "wind")
+        default :
+            self.weatherImageView.image = .init(systemName: "xmark.circle")
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -399,4 +391,3 @@ extension DiaryViewController: SFSpeechRecognizerDelegate {
         }
     }
 }
-
