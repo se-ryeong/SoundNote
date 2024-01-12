@@ -8,9 +8,14 @@
 import UIKit
 import SnapKit
 import Speech
+import WeatherKit
+import Combine
 
 final class DiaryViewController : UIViewController {
+    private var store = Set<AnyCancellable>()
     
+    private let weatherService = WeatherDataHelper.shared
+    private let locationManager = LocationManager.shared
     var calendarViewController: CalendarViewController?
     
     private var subTitleLabel: UILabel = {
@@ -32,6 +37,15 @@ final class DiaryViewController : UIViewController {
         
         return view
     }()
+    
+    private let weatherImageView: UIImageView = {
+        let view = UIImageView()
+        view.contentMode = .scaleAspectFit
+        view.tintColor = .black
+        
+        return view
+    }()
+    
     
     private var textView: UITextView = {
         let view = UITextView()
@@ -97,10 +111,105 @@ final class DiaryViewController : UIViewController {
         setUI()
         setLayout()
         setNavigationBar()
+        setupBinding()
+        
+        locationManager.requestPermission() // 위치 권한 요청
         
         speechRecognizer?.delegate = self
         recordButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        
+    }
+    
+    private func setupBinding() {
+        locationManager.$userLocation
+            .sink { [weak self] userLocation in
+                guard let self,
+                      let userLocation else { return }
+                Task {
+                    do {
+                        let weatherData = try await self.weatherService.updateCurrentWeather(userLocation: userLocation)
+                        
+                        // TODO: WeatherCondition 타입을 파라미터로 받는 함수 만들어서 스위치문으로 분기해서 이미지 띄우기
+                        print(weatherData.condition)
+                        switch weatherData.condition {
+                        case .clear:
+                            self.weatherImageView.image = .init(systemName: "sun.min")
+                        default:
+                            self.weatherImageView.image = .init(systemName: "rainbow")
+                            
+        //                case .blizzard:
+        //
+        //                case .blowingDust:
+        //                    <#code#>
+        //                case .blowingSnow:
+        //                    <#code#>
+        //                case .breezy:
+        //                    <#code#>
+        //                case .clear:
+        //                    weatherImageView.image = .init(systemName: "sun")
+        //                case .cloudy:
+        //                    <#code#>
+        //                case .drizzle:
+        //                    <#code#>
+        //                case .flurries:
+        //                    <#code#>
+        //                case .foggy:
+        //                    <#code#>
+        //                case .freezingDrizzle:
+        //                    <#code#>
+        //                case .freezingRain:
+        //                    <#code#>
+        //                case .frigid:
+        //                    <#code#>
+        //                case .hail:
+        //                    <#code#>
+        //                case .haze:
+        //                    <#code#>
+        //                case .heavyRain:
+        //                    <#code#>
+        //                case .heavySnow:
+        //                    <#code#>
+        //                case .hot:
+        //                    <#code#>
+        //                case .hurricane:
+        //                    <#code#>
+        //                case .isolatedThunderstorms:
+        //                    <#code#>
+        //                case .mostlyClear:
+        //                    <#code#>
+        //                case .mostlyCloudy:
+        //                    <#code#>
+        //                case .partlyCloudy:
+        //                    <#code#>
+        //                case .rain:
+        //                    <#code#>
+        //                case .scatteredThunderstorms:
+        //                    <#code#>
+        //                case .sleet:
+        //                    <#code#>
+        //                case .smoky:
+        //                    <#code#>
+        //                case .snow:
+        //                    <#code#>
+        //                case .strongStorms:
+        //                    <#code#>
+        //                case .sunFlurries:
+        //                    <#code#>
+        //                case .sunShowers:
+        //                    <#code#>
+        //                case .thunderstorms:
+        //                    <#code#>
+        //                case .tropicalStorm:
+        //                    <#code#>
+        //                case .windy:
+        //                    <#code#>
+        //                case .wintryMix:
+        //                    <#code#>
+                        }
+                    } catch {
+                        print(error)
+                    }
+                }
+            }.store(in: &store)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -119,7 +228,7 @@ final class DiaryViewController : UIViewController {
     }
     
     func setUI() {
-        view.addSubviews([subTitleLabel, recordFrameView, recordButton, calendarButton, searchButton])
+        view.addSubviews([subTitleLabel, recordFrameView, recordButton, calendarButton, searchButton, weatherImageView])
         recordFrameView.addSubviews([dateLabel, textView])
     }
     
@@ -165,6 +274,12 @@ final class DiaryViewController : UIViewController {
             $0.top.equalTo(dateLabel.snp.bottom).offset(12)
             $0.horizontalEdges.equalTo(recordFrameView).inset(8)
             $0.bottom.equalTo(recordFrameView.snp.bottom).offset(-8)
+        }
+        
+        weatherImageView.snp.makeConstraints {
+            $0.centerY.equalTo(subTitleLabel)
+            $0.trailing.equalTo(textView.snp.trailing)
+            $0.size.equalTo(40)
         }
     }
     

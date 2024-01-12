@@ -22,11 +22,12 @@
 		C385BFD42B3D749F00D1FF6F /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385BFD32B3D749F00D1FF6F /* UILabel+.swift */; };
 		C3B4DED12B3E87DE00660E57 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = C3B4DED02B3E87DE00660E57 /* FSCalendar */; };
 		C3B4DED42B3E88CD00660E57 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C3B4DED32B3E88CD00660E57 /* SnapKit */; };
-		C3B4DED62B3E88CD00660E57 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = C3B4DED52B3E88CD00660E57 /* SnapKit-Dynamic */; };
-		C3B4DEDA2B3E93D200660E57 /* Prata-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3B4DED92B3E93D200660E57 /* Prata-Regular.ttf */; };
 		C3B4DEDE2B3E94A900660E57 /* PT Mono Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3B4DEDD2B3E94A900660E57 /* PT Mono Bold.ttf */; };
 		C3B4DEE12B405FA900660E57 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B4DEE02B405FA900660E57 /* UIColor+.swift */; };
 		C3B4DEE32B40669300660E57 /* UIView+AddSubViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B4DEE22B40669300660E57 /* UIView+AddSubViews.swift */; };
+		C3F6286B2B50F9A200B46E38 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F6286A2B50F9A200B46E38 /* WeatherService.swift */; };
+		C3F6286D2B5110F000B46E38 /* Prata-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3F6286C2B5110F000B46E38 /* Prata-Regular.ttf */; };
+		C3F628702B5111CA00B46E38 /* LocationManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F6286F2B5111CA00B46E38 /* LocationManger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,10 +46,13 @@
 		C385BFCF2B3D71E600D1FF6F /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		C385BFD12B3D71FA00D1FF6F /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		C385BFD32B3D749F00D1FF6F /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
-		C3B4DED92B3E93D200660E57 /* Prata-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Prata-Regular.ttf"; path = "../../../../../../Downloads/prata/Prata-Regular.ttf"; sourceTree = "<group>"; };
 		C3B4DEDD2B3E94A900660E57 /* PT Mono Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PT Mono Bold.ttf"; sourceTree = "<group>"; };
 		C3B4DEE02B405FA900660E57 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		C3B4DEE22B40669300660E57 /* UIView+AddSubViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddSubViews.swift"; sourceTree = "<group>"; };
+		C3F628692B50F55E00B46E38 /* RecordApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RecordApp.entitlements; sourceTree = "<group>"; };
+		C3F6286A2B50F9A200B46E38 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		C3F6286C2B5110F000B46E38 /* Prata-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Prata-Regular.ttf"; sourceTree = "<group>"; };
+		C3F6286F2B5111CA00B46E38 /* LocationManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +62,6 @@
 			files = (
 				C3B4DED12B3E87DE00660E57 /* FSCalendar in Frameworks */,
 				C3B4DED42B3E88CD00660E57 /* SnapKit in Frameworks */,
-				C3B4DED62B3E88CD00660E57 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,9 +71,6 @@
 		C35FC9C82B3D68360036F044 = {
 			isa = PBXGroup;
 			children = (
-				C3B4DEDF2B3EA1A500660E57 /* App */,
-				C385BFC92B3D710B00D1FF6F /* Extension */,
-				C385BFC12B3D6D8300D1FF6F /* Resources */,
 				C35FC9D32B3D68360036F044 /* RecordApp */,
 				C35FC9D22B3D68360036F044 /* Products */,
 			);
@@ -87,6 +87,11 @@
 		C35FC9D32B3D68360036F044 /* RecordApp */ = {
 			isa = PBXGroup;
 			children = (
+				C3F6286E2B5111B400B46E38 /* Helper */,
+				C3B4DEDF2B3EA1A500660E57 /* App */,
+				C385BFC92B3D710B00D1FF6F /* Extension */,
+				C385BFC12B3D6D8300D1FF6F /* Resources */,
+				C3F628692B50F55E00B46E38 /* RecordApp.entitlements */,
 				C385BFC42B3D6EAD00D1FF6F /* Calendar */,
 				C385BFC32B3D6EA200D1FF6F /* Diary */,
 			);
@@ -136,7 +141,7 @@
 				C385BFD12B3D71FA00D1FF6F /* Pretendard-Medium.otf */,
 				C385BFCD2B3D71D400D1FF6F /* Pretendard-Regular.otf */,
 				C385BFCF2B3D71E600D1FF6F /* Pretendard-Bold.otf */,
-				C3B4DED92B3E93D200660E57 /* Prata-Regular.ttf */,
+				C3F6286C2B5110F000B46E38 /* Prata-Regular.ttf */,
 				C3B4DEDD2B3E94A900660E57 /* PT Mono Bold.ttf */,
 			);
 			path = Fonts;
@@ -152,6 +157,15 @@
 				C372BD732B4EF30C00A0C4AA /* Localizable.xcstrings */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		C3F6286E2B5111B400B46E38 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				C3F6286A2B50F9A200B46E38 /* WeatherService.swift */,
+				C3F6286F2B5111CA00B46E38 /* LocationManger.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,7 +187,6 @@
 			packageProductDependencies = (
 				C3B4DED02B3E87DE00660E57 /* FSCalendar */,
 				C3B4DED32B3E88CD00660E57 /* SnapKit */,
-				C3B4DED52B3E88CD00660E57 /* SnapKit-Dynamic */,
 			);
 			productName = RecordApp;
 			productReference = C35FC9D12B3D68360036F044 /* RecordApp.app */;
@@ -223,12 +236,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C35FC9E12B3D68370036F044 /* LaunchScreen.storyboard in Resources */,
-				C3B4DEDA2B3E93D200660E57 /* Prata-Regular.ttf in Resources */,
 				C3B4DEDE2B3E94A900660E57 /* PT Mono Bold.ttf in Resources */,
 				C385BFD22B3D71FA00D1FF6F /* Pretendard-Medium.otf in Resources */,
 				C385BFD02B3D71E600D1FF6F /* Pretendard-Bold.otf in Resources */,
 				C385BFCE2B3D71D400D1FF6F /* Pretendard-Regular.otf in Resources */,
 				C35FC9DE2B3D68370036F044 /* Assets.xcassets in Resources */,
+				C3F6286D2B5110F000B46E38 /* Prata-Regular.ttf in Resources */,
 				C372BD742B4EF30C00A0C4AA /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,9 +253,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3F6286B2B50F9A200B46E38 /* WeatherService.swift in Sources */,
 				C3B4DEE32B40669300660E57 /* UIView+AddSubViews.swift in Sources */,
 				C385BFD42B3D749F00D1FF6F /* UILabel+.swift in Sources */,
 				C372BD762B4EF39700A0C4AA /* String+.swift in Sources */,
+				C3F628702B5111CA00B46E38 /* LocationManger.swift in Sources */,
 				C385BFC82B3D6F1A00D1FF6F /* DiaryViewController.swift in Sources */,
 				C35FC9D52B3D68360036F044 /* AppDelegate.swift in Sources */,
 				C385BFCB2B3D712700D1FF6F /* UIFont+.swift in Sources */,
@@ -385,15 +400,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RecordApp/RecordApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 347XA53QJK;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = App/Info.plist;
+				INFOPLIST_FILE = RecordApp/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -415,15 +432,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RecordApp/RecordApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 347XA53QJK;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = App/Info.plist;
+				INFOPLIST_FILE = RecordApp/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -492,11 +511,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C3B4DED22B3E88CD00660E57 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		C3B4DED52B3E88CD00660E57 /* SnapKit-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C3B4DED22B3E88CD00660E57 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = "SnapKit-Dynamic";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
