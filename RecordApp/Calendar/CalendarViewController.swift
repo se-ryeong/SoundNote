@@ -129,7 +129,6 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     
     // 선택된 날짜 색상
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillSelectionColorFor date: Date) -> UIColor? {
-//        return UIColor.clear
         return UIColor(named: "Color2")
     }
     
@@ -141,5 +140,3 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         return appearance.titleDefaultColor
     }
 }
-
-//extension CalendarViewController: Diary

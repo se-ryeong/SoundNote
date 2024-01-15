@@ -111,7 +111,7 @@ final class DiaryViewController : UIViewController {
         setUI()
         setLayout()
         setNavigationBar()
-        setupBinding()
+        setLocation()
         
         locationManager.requestPermission() // 위치 권한 요청
         
@@ -119,26 +119,22 @@ final class DiaryViewController : UIViewController {
         recordButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
     
-    private func setupBinding() {
-        locationManager.$userLocation
-            .sink { [weak self] userLocation in
-                guard let self,
-                      let userLocation else { return }
-                Task {
-                    do {
-                        let weatherData = try await self.weatherService.updateCurrentWeather(userLocation: userLocation)
-                        self.weatherState(weather: weatherData)
-                        // TODO: WeatherCondition 타입을 파라미터로 받는 함수 만들어서 스위치문으로 분기해서 이미지 띄우기
-                        print(weatherData.condition)
-                    } catch {
-                        print(error)
-                    }
+    func setLocation() {
+        locationManager.updateLocationHandler = { location in
+            Task {
+                do {
+                    let weatherData = try await self.weatherService.updateCurrentWeather(userLocation: location)
+                    self.weatherState(weather: weatherData)
+                    // TODO: WeatherCondition 타입을 파라미터로 받는 함수 만들어서 스위치문으로 분기해서 이미지 띄우기
+                    print(weatherData.condition)
+                } catch {
+                    print(error)
                 }
-            }.store(in: &store)
+            }
+        }
     }
     
     func weatherState(weather: CurrentWeather) {
-        
         switch weather.condition {
         case .blizzard:
             self.weatherImageView.image = .init(systemName: "wind.snow")
@@ -201,7 +197,6 @@ final class DiaryViewController : UIViewController {
         default :
             self.weatherImageView.image = .init(systemName: "xmark.circle")
         }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -216,7 +211,6 @@ final class DiaryViewController : UIViewController {
         let backBarButtonItem = UIBarButtonItem(title: "뒤로가기", style: .plain, target: self, action: nil)
         backBarButtonItem.tintColor = .black
         self.navigationItem.backBarButtonItem = backBarButtonItem
-        
     }
     
     func setUI() {

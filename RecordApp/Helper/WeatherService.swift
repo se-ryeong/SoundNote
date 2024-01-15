@@ -9,14 +9,12 @@ import UIKit
 import WeatherKit
 import CoreLocation
 
-class WeatherDataHelper: NSObject {
+class WeatherDataHelper {
     static let shared = WeatherDataHelper()
     
     private let service = WeatherService.shared
     
-    private override init() {
-        super.init()
-    }
+    private init() { }
 
     func updateCurrentWeather(userLocation: CLLocation) async throws -> CurrentWeather {
         let weather = try await self.service.weather(for: userLocation, including: .current)

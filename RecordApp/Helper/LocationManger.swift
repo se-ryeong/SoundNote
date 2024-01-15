@@ -12,6 +12,8 @@ class LocationManager: NSObject {
     
     @Published var userLocation: CLLocation?
     
+    var updateLocationHandler: ((CLLocation) -> Void)?
+    
     let locationManager = CLLocationManager()
     
     static let shared = LocationManager(accuracy: kCLLocationAccuracyHundredMeters)
@@ -27,11 +29,12 @@ class LocationManager: NSObject {
     }
 }
 
-// delegae
+// delegate
 extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
         self.userLocation = location
+        updateLocationHandler?(location)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

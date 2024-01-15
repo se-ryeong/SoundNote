@@ -25,6 +25,9 @@
 		C3B4DEDE2B3E94A900660E57 /* PT Mono Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3B4DEDD2B3E94A900660E57 /* PT Mono Bold.ttf */; };
 		C3B4DEE12B405FA900660E57 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B4DEE02B405FA900660E57 /* UIColor+.swift */; };
 		C3B4DEE32B40669300660E57 /* UIView+AddSubViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B4DEE22B40669300660E57 /* UIView+AddSubViews.swift */; };
+		C3EA41CF2B5538AA00ACF334 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = C3EA41CE2B5538AA00ACF334 /* Realm */; };
+		C3EA41D12B5538AA00ACF334 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C3EA41D02B5538AA00ACF334 /* RealmSwift */; };
+		C3EA41D32B5539E900ACF334 /* ContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EA41D22B5539E900ACF334 /* ContentManager.swift */; };
 		C3F6286B2B50F9A200B46E38 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F6286A2B50F9A200B46E38 /* WeatherService.swift */; };
 		C3F6286D2B5110F000B46E38 /* Prata-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3F6286C2B5110F000B46E38 /* Prata-Regular.ttf */; };
 		C3F628702B5111CA00B46E38 /* LocationManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F6286F2B5111CA00B46E38 /* LocationManger.swift */; };
@@ -49,6 +52,7 @@
 		C3B4DEDD2B3E94A900660E57 /* PT Mono Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PT Mono Bold.ttf"; sourceTree = "<group>"; };
 		C3B4DEE02B405FA900660E57 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		C3B4DEE22B40669300660E57 /* UIView+AddSubViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddSubViews.swift"; sourceTree = "<group>"; };
+		C3EA41D22B5539E900ACF334 /* ContentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManager.swift; sourceTree = "<group>"; };
 		C3F628692B50F55E00B46E38 /* RecordApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RecordApp.entitlements; sourceTree = "<group>"; };
 		C3F6286A2B50F9A200B46E38 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		C3F6286C2B5110F000B46E38 /* Prata-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Prata-Regular.ttf"; sourceTree = "<group>"; };
@@ -60,6 +64,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3EA41D12B5538AA00ACF334 /* RealmSwift in Frameworks */,
+				C3EA41CF2B5538AA00ACF334 /* Realm in Frameworks */,
 				C3B4DED12B3E87DE00660E57 /* FSCalendar in Frameworks */,
 				C3B4DED42B3E88CD00660E57 /* SnapKit in Frameworks */,
 			);
@@ -164,6 +170,7 @@
 			children = (
 				C3F6286A2B50F9A200B46E38 /* WeatherService.swift */,
 				C3F6286F2B5111CA00B46E38 /* LocationManger.swift */,
+				C3EA41D22B5539E900ACF334 /* ContentManager.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -187,6 +194,8 @@
 			packageProductDependencies = (
 				C3B4DED02B3E87DE00660E57 /* FSCalendar */,
 				C3B4DED32B3E88CD00660E57 /* SnapKit */,
+				C3EA41CE2B5538AA00ACF334 /* Realm */,
+				C3EA41D02B5538AA00ACF334 /* RealmSwift */,
 			);
 			productName = RecordApp;
 			productReference = C35FC9D12B3D68360036F044 /* RecordApp.app */;
@@ -220,6 +229,7 @@
 			packageReferences = (
 				C3B4DECF2B3E87DE00660E57 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				C3B4DED22B3E88CD00660E57 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				C3EA41CD2B5538AA00ACF334 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = C35FC9D22B3D68360036F044 /* Products */;
 			projectDirPath = "";
@@ -254,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3F6286B2B50F9A200B46E38 /* WeatherService.swift in Sources */,
+				C3EA41D32B5539E900ACF334 /* ContentManager.swift in Sources */,
 				C3B4DEE32B40669300660E57 /* UIView+AddSubViews.swift in Sources */,
 				C385BFD42B3D749F00D1FF6F /* UILabel+.swift in Sources */,
 				C372BD762B4EF39700A0C4AA /* String+.swift in Sources */,
@@ -499,6 +510,14 @@
 				minimumVersion = 5.6.0;
 			};
 		};
+		C3EA41CD2B5538AA00ACF334 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -511,6 +530,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C3B4DED22B3E88CD00660E57 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		C3EA41CE2B5538AA00ACF334 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3EA41CD2B5538AA00ACF334 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		C3EA41D02B5538AA00ACF334 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3EA41CD2B5538AA00ACF334 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
