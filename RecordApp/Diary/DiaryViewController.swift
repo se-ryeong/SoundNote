@@ -10,8 +10,14 @@ import SnapKit
 import Speech
 import WeatherKit
 import Combine
+import RealmSwift
 
 final class DiaryViewController : UIViewController {
+    var contentList: [Content] = []
+    
+    private var item: Content?
+    private var contentManager = ContentManager()
+    
     private var store = Set<AnyCancellable>()
     
     private let weatherService = WeatherDataHelper.shared
@@ -117,6 +123,9 @@ final class DiaryViewController : UIViewController {
         
         speechRecognizer?.delegate = self
         recordButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        
+        // MARK: - Temp
+        print(Realm.Configuration.defaultConfiguration.fileURL)
     }
     
     func setLocation() {
@@ -177,7 +186,7 @@ final class DiaryViewController : UIViewController {
         case .mostlyCloudy:
             self.weatherImageView.image = .init(systemName: "cloud")
         case .partlyCloudy:
-            self.weatherImageView.image = .init(systemName: "cloud")
+            self.weatherImageView.image = .init(systemName: "cloud.sun")
         case .rain:
             self.weatherImageView.image = .init(systemName: "cloud.rain")
         case .scatteredThunderstorms:
@@ -269,6 +278,12 @@ final class DiaryViewController : UIViewController {
         }
     }
     
+    func loadData() {
+        contentList = contentManager.read()
+        print("Loaded content count: \(contentList.count)")
+//        textView.text = contentList.map { $0.memo ?? "" }.joined(separator: "\n")
+    }
+    
     // MARK: STT설정
     
     // 한국어 설정
@@ -301,9 +316,23 @@ final class DiaryViewController : UIViewController {
         let alert = UIAlertController(title: "녹음이 완료되었습니다.", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { [weak self] _ in
             guard let self else { return }
+            self.loadData()  // 녹음 완료 후 데이터 로드
+            
             // TODO: Local DB에 저장하기
-            self.textView.text = ""
-            let text = textView.text
+//            self.textView.text = ""
+//            let text = textView.text
+            
+            let memo = textView.text
+            let content = Content(memo: memo, createDate: Date())
+           
+            let newContent = contentManager.create(content: content)
+            
+            func showAlert(title: String, message: String) {
+                let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "확인", style: .default)
+                alertController.addAction(okAction)
+                present(alertController, animated: true)
+            }
         }))
         self.present(alert, animated: true)
     }

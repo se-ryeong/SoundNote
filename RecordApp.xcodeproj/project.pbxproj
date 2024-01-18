@@ -28,6 +28,7 @@
 		C3EA41CF2B5538AA00ACF334 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = C3EA41CE2B5538AA00ACF334 /* Realm */; };
 		C3EA41D12B5538AA00ACF334 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C3EA41D02B5538AA00ACF334 /* RealmSwift */; };
 		C3EA41D32B5539E900ACF334 /* ContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EA41D22B5539E900ACF334 /* ContentManager.swift */; };
+		C3EA41D72B554C5000ACF334 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EA41D62B554C5000ACF334 /* Content.swift */; };
 		C3F6286B2B50F9A200B46E38 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F6286A2B50F9A200B46E38 /* WeatherService.swift */; };
 		C3F6286D2B5110F000B46E38 /* Prata-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3F6286C2B5110F000B46E38 /* Prata-Regular.ttf */; };
 		C3F628702B5111CA00B46E38 /* LocationManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F6286F2B5111CA00B46E38 /* LocationManger.swift */; };
@@ -53,6 +54,7 @@
 		C3B4DEE02B405FA900660E57 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		C3B4DEE22B40669300660E57 /* UIView+AddSubViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddSubViews.swift"; sourceTree = "<group>"; };
 		C3EA41D22B5539E900ACF334 /* ContentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManager.swift; sourceTree = "<group>"; };
+		C3EA41D62B554C5000ACF334 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		C3F628692B50F55E00B46E38 /* RecordApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RecordApp.entitlements; sourceTree = "<group>"; };
 		C3F6286A2B50F9A200B46E38 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		C3F6286C2B5110F000B46E38 /* Prata-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Prata-Regular.ttf"; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 		C35FC9D32B3D68360036F044 /* RecordApp */ = {
 			isa = PBXGroup;
 			children = (
+				C3EA41D52B554C3600ACF334 /* Entity */,
 				C3F6286E2B5111B400B46E38 /* Helper */,
 				C3B4DEDF2B3EA1A500660E57 /* App */,
 				C385BFC92B3D710B00D1FF6F /* Extension */,
@@ -163,6 +166,14 @@
 				C372BD732B4EF30C00A0C4AA /* Localizable.xcstrings */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		C3EA41D52B554C3600ACF334 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				C3EA41D62B554C5000ACF334 /* Content.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		C3F6286E2B5111B400B46E38 /* Helper */ = {
@@ -270,6 +281,7 @@
 				C372BD762B4EF39700A0C4AA /* String+.swift in Sources */,
 				C3F628702B5111CA00B46E38 /* LocationManger.swift in Sources */,
 				C385BFC82B3D6F1A00D1FF6F /* DiaryViewController.swift in Sources */,
+				C3EA41D72B554C5000ACF334 /* Content.swift in Sources */,
 				C35FC9D52B3D68360036F044 /* AppDelegate.swift in Sources */,
 				C385BFCB2B3D712700D1FF6F /* UIFont+.swift in Sources */,
 				C385BFC62B3D6EE500D1FF6F /* CalendarViewController.swift in Sources */,

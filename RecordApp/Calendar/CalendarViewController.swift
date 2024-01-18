@@ -10,6 +10,8 @@ import FSCalendar
 
 class CalendarViewController: UIViewController {
     
+    private var contentManager = ContentManager()
+    
     var textView: UITextView = {
         let textView = UITextView()
         textView.backgroundColor = UIColor(named: "Color")
@@ -102,6 +104,11 @@ class CalendarViewController: UIViewController {
             $0.top.equalTo(textView.snp.top).offset(12)
             $0.centerX.equalToSuperview()
         }
+    }
+    
+    func loadMemo() {
+        let contents = contentManager.read()
+        
     }
 }
 
