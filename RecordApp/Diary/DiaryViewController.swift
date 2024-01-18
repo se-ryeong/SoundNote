@@ -34,16 +34,7 @@ final class DiaryViewController : UIViewController {
         return label
     }()
     
-    private var recordFrameView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(named: "Color")
-        view.layer.cornerRadius = 10
-        view.layer.borderColor = UIColor.systemGray5.cgColor
-        view.layer.borderWidth = 0.5
-        
-        return view
-    }()
-    
+ 
     private let weatherImageView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
@@ -52,11 +43,8 @@ final class DiaryViewController : UIViewController {
         return view
     }()
     
-    
-    private var textView: UITextView = {
-        let view = UITextView()
-        view.backgroundColor = .clear
-        view.font = .body1
+    private let memoView: MemoView = {
+        let view = MemoView()
         
         return view
     }()
@@ -95,17 +83,7 @@ final class DiaryViewController : UIViewController {
         return button
     }()
     
-    private var dateLabel: UILabel = {
-        let label = UILabel()
-        label.font = .title
-        label.textColor = UIColor(named: "Color1")
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MM . dd"
-        label.text = formatter.string(from: Date())
-        
-        return label
-    }()
-    
+
     @objc private func calendarButtonTapped(_ sender: UIButton) {
         let calendarVC = CalendarViewController()
         self.navigationController?.pushViewController(calendarVC, animated: true)
@@ -223,8 +201,7 @@ final class DiaryViewController : UIViewController {
     }
     
     func setUI() {
-        view.addSubviews([subTitleLabel, recordFrameView, recordButton, calendarButton, searchButton, weatherImageView])
-        recordFrameView.addSubviews([dateLabel, textView])
+        view.addSubviews([subTitleLabel, memoView, recordButton, calendarButton, searchButton, weatherImageView])
     }
     
     func setLayout() {
@@ -234,13 +211,13 @@ final class DiaryViewController : UIViewController {
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(32)
         }
         
-        recordFrameView.snp.makeConstraints {
+        memoView.snp.makeConstraints {
             $0.top.equalTo(subTitleLabel.snp.bottom).offset(24)
             $0.horizontalEdges.equalToSuperview().inset(32)
         }
         
         recordButton.snp.makeConstraints {
-            $0.top.equalTo(recordFrameView.snp.bottom).offset(18)
+            $0.top.equalTo(memoView.snp.bottom).offset(18)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(130)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-100)
@@ -259,21 +236,9 @@ final class DiaryViewController : UIViewController {
             $0.height.width.equalTo(50)
         }
         
-        dateLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        dateLabel.snp.makeConstraints {
-            $0.top.equalTo(recordFrameView.snp.top).offset(12)
-            $0.centerX.equalToSuperview()
-        }
-        
-        textView.snp.makeConstraints {
-            $0.top.equalTo(dateLabel.snp.bottom).offset(12)
-            $0.horizontalEdges.equalTo(recordFrameView).inset(8)
-            $0.bottom.equalTo(recordFrameView.snp.bottom).offset(-8)
-        }
-        
         weatherImageView.snp.makeConstraints {
             $0.centerY.equalTo(subTitleLabel)
-            $0.trailing.equalTo(textView.snp.trailing)
+            $0.trailing.equalToSuperview().offset(-32)
             $0.size.equalTo(40)
         }
     }
@@ -322,7 +287,7 @@ final class DiaryViewController : UIViewController {
 //            self.textView.text = ""
 //            let text = textView.text
             
-            let memo = textView.text
+            let memo = memoView.textView.text
             let content = Content(memo: memo, createDate: Date())
            
             let newContent = contentManager.create(content: content)
@@ -382,7 +347,7 @@ extension DiaryViewController: SFSpeechRecognizerDelegate {
             
             if result != nil {
                 // 결과가 nil이 아니면 가장 정확한 번역을 텍스트뷰에 작성, isFinal을 true로 설정
-                self.textView.text = result?.bestTranscription.formattedString
+                self.memoView.textView.text = result?.bestTranscription.formattedString
                 
                 isFinal = (result?.isFinal)!
             }

@@ -11,16 +11,7 @@ import FSCalendar
 class CalendarViewController: UIViewController {
     
     private var contentManager = ContentManager()
-    
-    var textView: UITextView = {
-        let textView = UITextView()
-        textView.backgroundColor = UIColor(named: "Color")
-        textView.layer.cornerRadius = 10
-        textView.layer.borderColor = UIColor.systemGray5.cgColor
-        textView.layer.borderWidth = 0.5
-        
-        return textView
-    }()
+    var contentList: [Content] = []
     
     private var calendarView: FSCalendar = {
         let calendar = FSCalendar()
@@ -47,15 +38,10 @@ class CalendarViewController: UIViewController {
         return label
     }()
     
-    private var dateLabel: UILabel = {
-        let label = UILabel()
-        label.font = .title
-        label.textColor = UIColor(named: "Color1")
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MM . dd"
-        label.text = formatter.string(from: Date())
+    private let memoView: MemoView = {
+        let view = MemoView()
         
-        return label
+        return view
     }()
         
     override func viewDidLoad() {
@@ -71,6 +57,8 @@ class CalendarViewController: UIViewController {
         let initialMonth = dateFormatter.string(from: Date())
         monthLabel.text = initialMonth
         
+        loadMemo()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,11 +66,11 @@ class CalendarViewController: UIViewController {
     }
     
     func setUI() {
-        view.addSubviews([textView, calendarView, monthLabel, dateLabel])
+        view.addSubviews([memoView, calendarView, monthLabel])
     }
     
     func setLayout() {
-        textView.snp.makeConstraints {
+        memoView.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(32)
             $0.top.equalTo(calendarView.snp.bottom).offset(8)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-20)
@@ -99,16 +87,16 @@ class CalendarViewController: UIViewController {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
             $0.height.equalTo(30)
         }
-        
-        dateLabel.snp.makeConstraints {
-            $0.top.equalTo(textView.snp.top).offset(12)
-            $0.centerX.equalToSuperview()
-        }
     }
     
     func loadMemo() {
-        let contents = contentManager.read()
+        contentList = contentManager.read()
         
+        // contentList에서 memo 속성을 추출하여 문자열로 합침
+        let memoText = contentList.map { $0.memo ?? "" }.joined(separator: "\n")
+        
+        // textView.text에 할당
+        self.memoView.textView.text = memoText
     }
 }
 
