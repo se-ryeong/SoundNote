@@ -11,7 +11,11 @@ import FSCalendar
 class CalendarViewController: UIViewController {
     
     private var contentManager = ContentManager()
-    var contentList: [Content] = []
+    var contentList: [Content] = [] {
+        didSet {
+            pageControl.numberOfPages = self.contentList.count
+        }
+    }
     
     private var calendarView: FSCalendar = {
         let calendar = FSCalendar()
@@ -43,11 +47,37 @@ class CalendarViewController: UIViewController {
         
         return view
     }()
+    
+    private var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 0
         
+        let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        view.register(MemoCell.self, forCellWithReuseIdentifier: MemoCell.identifier)
+        
+        view.backgroundColor = .clear
+        view.isPagingEnabled = true
+        view.showsHorizontalScrollIndicator = false
+        
+        
+        return view
+    }()
+    
+    private var pageControl: UIPageControl = {
+        let pageControl = UIPageControl()
+        pageControl.currentPageIndicatorTintColor = UIColor(named: "Color3")
+        pageControl.pageIndicatorTintColor = UIColor(named: "Color1")
+        pageControl.currentPage = 0
+        
+        return pageControl
+    }()
+    
     override func viewDidLoad() {
         view.backgroundColor = UIColor(named: "background")
         setUI()
         setLayout()
+        setDelegate()
         calendarView.delegate = self
         calendarView.dataSource = self
         
@@ -58,20 +88,22 @@ class CalendarViewController: UIViewController {
         monthLabel.text = initialMonth
         
         loadMemo()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        updateItems()
     }
     
     func setUI() {
-        view.addSubviews([memoView, calendarView, monthLabel])
+        view.addSubviews([collectionView, calendarView, monthLabel, pageControl])
     }
     
     func setLayout() {
-        memoView.snp.makeConstraints {
-            $0.horizontalEdges.equalToSuperview().inset(32)
+        collectionView.snp.makeConstraints {
+//            $0.horizontalEdges.equalToSuperview().inset(32)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(32)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.top.equalTo(calendarView.snp.bottom).offset(8)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-20)
         }
@@ -87,10 +119,30 @@ class CalendarViewController: UIViewController {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
             $0.height.equalTo(30)
         }
+        
+        pageControl.snp.makeConstraints {
+            $0.top.equalTo(collectionView.snp.bottom).inset(-8)
+            $0.centerX.equalToSuperview()
+            
+        }
+    }
+    
+    func setDelegate() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+    }
+    
+    private func updateItems() {
+        let contents = contentManager.read()
+        contentList = contents.prefix(5).map { $0 as Content }
+        collectionView.reloadData()
     }
     
     func loadMemo() {
         contentList = contentManager.read()
+        pageControl.numberOfPages = contentList.count
+        
+        collectionView.reloadData()
         
         // contentList에서 memo 속성을 추출하여 문자열로 합침
         let memoText = contentList.map { $0.memo ?? "" }.joined(separator: "\n")
@@ -133,5 +185,36 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleSelectionColorFor date: Date) -> UIColor? {
         return appearance.titleDefaultColor
+    }
+}
+
+extension CalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return contentList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemoCell", for: indexPath) as? MemoCell
+        else { return UICollectionViewCell() }
+        
+        return cell
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let page = Int(targetContentOffset.pointee.x / collectionView.frame.width)
+        self.pageControl.currentPage = page
+    }
+}
+
+extension CalendarViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // cell의 너비 설정
+        let width = (collectionView.bounds.width) - 32
+        return CGSize(width: width, height: collectionView.bounds.height)
+    }
+    
+    // 셀 사이의 간격 지정, 열 사이의 간격 지정, 아이템들 좌우 간격 지정
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        32
     }
 }
