@@ -11,6 +11,7 @@ import FSCalendar
 class CalendarViewController: UIViewController {
     
     private var contentManager = ContentManager()
+    
     var contentList: [Content] = [] {
         didSet {
             pageControl.numberOfPages = self.contentList.count
@@ -42,12 +43,6 @@ class CalendarViewController: UIViewController {
         return label
     }()
     
-    private let memoView: MemoView = {
-        let view = MemoView()
-        
-        return view
-    }()
-    
     private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -55,12 +50,11 @@ class CalendarViewController: UIViewController {
         
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.register(MemoCell.self, forCellWithReuseIdentifier: MemoCell.identifier)
-        
+        view.contentInset = .init(top: 0, left: 0, bottom: 0, right: 32)
         view.backgroundColor = .clear
         view.isPagingEnabled = true
         view.showsHorizontalScrollIndicator = false
-        
-        
+                
         return view
     }()
     
@@ -78,6 +72,7 @@ class CalendarViewController: UIViewController {
         setUI()
         setLayout()
         setDelegate()
+        calendarView.delegate = self
         calendarView.delegate = self
         calendarView.dataSource = self
         
@@ -123,7 +118,6 @@ class CalendarViewController: UIViewController {
         pageControl.snp.makeConstraints {
             $0.top.equalTo(collectionView.snp.bottom).inset(-8)
             $0.centerX.equalToSuperview()
-            
         }
     }
     
@@ -143,12 +137,6 @@ class CalendarViewController: UIViewController {
         pageControl.numberOfPages = contentList.count
         
         collectionView.reloadData()
-        
-        // contentList에서 memo 속성을 추출하여 문자열로 합침
-        let memoText = contentList.map { $0.memo ?? "" }.joined(separator: "\n")
-        
-        // textView.text에 할당
-        self.memoView.textView.text = memoText
     }
 }
 
@@ -197,6 +185,10 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemoCell", for: indexPath) as? MemoCell
         else { return UICollectionViewCell() }
         
+        // contentList에서 memo 속성을 추출하여 문자열로 합침
+        let memoText = contentList.map { $0.memo ?? "" }.joined(separator: "\n")
+        cell.memoView.textView.text = memoText
+        
         return cell
     }
     
@@ -213,7 +205,7 @@ extension CalendarViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: width, height: collectionView.bounds.height)
     }
     
-    // 셀 사이의 간격 지정, 열 사이의 간격 지정, 아이템들 좌우 간격 지정
+    // 섹션 사이의 간격 지정, 열 사이의 간격 지정, 아이템들 좌우 간격 지정
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         32
     }

@@ -10,7 +10,7 @@ import UIKit
 class MemoCell: UICollectionViewCell {
     static let identifier = "MemoCell"
     
-    private let memoView: MemoView = {
+    let memoView: MemoView = {
         let view = MemoView()
         
         return view
