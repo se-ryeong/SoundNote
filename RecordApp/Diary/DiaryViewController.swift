@@ -61,7 +61,6 @@ final class DiaryViewController : UIViewController {
         return button
     }()
     
-    
     private lazy var calendarButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "Calendar"), for: .normal)
@@ -83,7 +82,7 @@ final class DiaryViewController : UIViewController {
         return button
     }()
     
-
+    
     @objc private func calendarButtonTapped(_ sender: UIButton) {
         let calendarVC = CalendarViewController()
         self.navigationController?.pushViewController(calendarVC, animated: true)

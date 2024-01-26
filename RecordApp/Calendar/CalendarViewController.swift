@@ -88,6 +88,8 @@ class CalendarViewController: UIViewController {
         super.viewWillAppear(animated)
         updateItemsWithMonth()
         loadMemo()
+        
+//        editButton.isHidden = selectedDateContent.isEmpty
     }
     
     func setUI() {
