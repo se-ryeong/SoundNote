@@ -23,13 +23,24 @@ class ContentManager {
     func read() -> [Content] {
         do {
             let realm = try Realm()
-            let contents = realm.objects(Content.self).sorted(byKeyPath: "createDate", ascending: false)
+            let contents = realm.objects(Content.self)
+                .sorted(byKeyPath: "createDate", ascending: false)
             return Array(contents)
         } catch {
             print("Failed create ContentObject: \(error)")
         }
         return []
     }
+    
+    func filterDate(date: Date) {
+        do {
+            let realm = try Realm()
+//            let filterDates = realm.filter
+        } catch {
+            print("Failed create ContentObject: \(error)")
+        }
+    }
+    
     
     func update(content: Content, completion: @escaping (Content) -> Void) {
         do {

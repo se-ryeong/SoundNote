@@ -87,7 +87,6 @@ final class DiaryViewController : UIViewController {
     @objc private func calendarButtonTapped(_ sender: UIButton) {
         let calendarVC = CalendarViewController()
         self.navigationController?.pushViewController(calendarVC, animated: true)
-        
     }
     
     override func viewDidLoad() {

@@ -12,22 +12,22 @@ class CalendarViewController: UIViewController {
     
     private var contentManager = ContentManager()
     
-    var contentList: [Content] = [] {
+    var contentList: [Content] = []
+    
+    // 해당 달의 전체 데이터를 가져온 배열에서 필터링해서 해당 날의 메모만 보여주면 된다.?
+    var selectedDateContent: [Content] = [] {
         didSet {
-            pageControl.numberOfPages = self.contentList.count
+            pageControl.numberOfPages = self.selectedDateContent.count
         }
     }
     
     private var calendarView: FSCalendar = {
         let calendar = FSCalendar()
-        
         calendar.scope = .month
         calendar.appearance.todayColor = UIColor(named: "datePick")
         calendar.appearance.caseOptions = .weekdayUsesSingleUpperCase
-        
         calendar.appearance.weekdayTextColor = .black
         calendar.placeholderType = .none // 현재 달의 날짜들만 표시되도록 설정
-        
         calendar.headerHeight = 0
         
         return calendar
@@ -72,9 +72,6 @@ class CalendarViewController: UIViewController {
         setUI()
         setLayout()
         setDelegate()
-        calendarView.delegate = self
-        calendarView.delegate = self
-        calendarView.dataSource = self
         
         // 초기값 설정
         let dateFormatter = DateFormatter()
@@ -82,12 +79,15 @@ class CalendarViewController: UIViewController {
         let initialMonth = dateFormatter.string(from: Date())
         monthLabel.text = initialMonth
         
-        loadMemo()
+        selectedDateContent = contentManager.read().filter {
+            $0.createDate?.formatted() ?? "" == Date.now.formatted()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateItems()
+        updateItemsWithMonth()
+        loadMemo()
     }
     
     func setUI() {
@@ -124,17 +124,25 @@ class CalendarViewController: UIViewController {
     func setDelegate() {
         collectionView.delegate = self
         collectionView.dataSource = self
+        calendarView.delegate = self
+        calendarView.dataSource = self
     }
     
-    private func updateItems() {
+    private func updateItemsWithMonth() {
+        let year = Calendar.current
+        let month = Calendar.current
         let contents = contentManager.read()
+            
         contentList = contents.prefix(5).map { $0 as Content }
         collectionView.reloadData()
     }
     
     func loadMemo() {
-        contentList = contentManager.read()
-        pageControl.numberOfPages = contentList.count
+        let targetDate = calendarView.currentPage.formattedWithMonth()
+        
+        contentList = contentManager.read().filter{
+            $0.createDate?.formattedWithMonth() ?? ""  == targetDate
+        }
         
         collectionView.reloadData()
     }
@@ -142,24 +150,18 @@ class CalendarViewController: UIViewController {
 
 extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        // 현재 연도
-        let thisYear = Calendar.current.component(.year, from: Date.now)
-        
-        // 캘린더의 현재 페이지
-        let year = Calendar.current.component(.year, from: calendar.currentPage)
-        let month = Calendar.current.component(.month, from: calendar.currentPage)
-        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM"
         
-        if thisYear == year {
-            // 현재 연도와 캘린더 현재 페이지 연도가 같을 때
-            let monthString = dateFormatter.string(from: calendar.currentPage)
-            monthLabel.text = monthString
-        } else {
-            let monthString = dateFormatter.string(from: calendar.currentPage)
-            monthLabel.text = monthString
-        }
+        let monthString = dateFormatter.string(from: calendar.currentPage)
+        monthLabel.text = monthString
+        
+        loadMemo()
+    }
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        selectedDateContent = contentList.filter { $0.createDate?.formatted() == date.formatted() }
+        collectionView.reloadData()
     }
     
     // 선택된 날짜 색상
@@ -174,11 +176,31 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleSelectionColorFor date: Date) -> UIColor? {
         return appearance.titleDefaultColor
     }
+    
+    // 이벤트 Dot표시 개수
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        if contentList.contains(where: { $0.createDate?.formatted() == date.formatted()
+        }) {
+            return 1
+        } else {
+            return 0
+        }
+    }
+    
+    // Dot 색상
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventDefaultColorsFor date: Date) -> [UIColor]? {
+        return [UIColor.systemBrown]
+    }
+    
+    // Selected Dot 색상
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventSelectionColorsFor date: Date) -> [UIColor]? {
+        return [UIColor.systemBrown]
+    }
 }
 
 extension CalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return contentList.count
+        return selectedDateContent.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -186,8 +208,8 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         else { return UICollectionViewCell() }
         
         // contentList에서 memo 속성을 추출하여 문자열로 합침
-        let memoText = contentList.map { $0.memo ?? "" }.joined(separator: "\n")
-        cell.memoView.textView.text = memoText
+        let item = selectedDateContent[indexPath.row]
+        cell.memoView.textView.text = item.memo
         
         return cell
     }

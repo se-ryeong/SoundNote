@@ -22,6 +22,7 @@
 		C385BFD02B3D71E600D1FF6F /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C385BFCF2B3D71E600D1FF6F /* Pretendard-Bold.otf */; };
 		C385BFD22B3D71FA00D1FF6F /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C385BFD12B3D71FA00D1FF6F /* Pretendard-Medium.otf */; };
 		C385BFD42B3D749F00D1FF6F /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385BFD32B3D749F00D1FF6F /* UILabel+.swift */; };
+		C3ABC4062B63757500C1DD91 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ABC4052B63757500C1DD91 /* Date+.swift */; };
 		C3B4DED12B3E87DE00660E57 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = C3B4DED02B3E87DE00660E57 /* FSCalendar */; };
 		C3B4DED42B3E88CD00660E57 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C3B4DED32B3E88CD00660E57 /* SnapKit */; };
 		C3B4DEDE2B3E94A900660E57 /* PT Mono Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3B4DEDD2B3E94A900660E57 /* PT Mono Bold.ttf */; };
@@ -54,6 +55,7 @@
 		C385BFCF2B3D71E600D1FF6F /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		C385BFD12B3D71FA00D1FF6F /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		C385BFD32B3D749F00D1FF6F /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
+		C3ABC4052B63757500C1DD91 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		C3B4DEDD2B3E94A900660E57 /* PT Mono Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PT Mono Bold.ttf"; sourceTree = "<group>"; };
 		C3B4DEE02B405FA900660E57 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		C3B4DEE22B40669300660E57 /* UIView+AddSubViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddSubViews.swift"; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				C3B4DEE02B405FA900660E57 /* UIColor+.swift */,
 				C3B4DEE22B40669300660E57 /* UIView+AddSubViews.swift */,
 				C372BD752B4EF39700A0C4AA /* String+.swift */,
+				C3ABC4052B63757500C1DD91 /* Date+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				C385BFC62B3D6EE500D1FF6F /* CalendarViewController.swift in Sources */,
 				C35FC9D72B3D68360036F044 /* SceneDelegate.swift in Sources */,
 				C3B4DEE12B405FA900660E57 /* UIColor+.swift in Sources */,
+				C3ABC4062B63757500C1DD91 /* Date+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
