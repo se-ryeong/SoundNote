@@ -6,8 +6,15 @@
 //
 
 import UIKit
+import PanModal
+
+protocol MemoCellDelegate: AnyObject {
+    func didTapEditButton(in cell: MemoCell)
+}
 
 class MemoCell: UICollectionViewCell {
+    weak var delegate: MemoCellDelegate?
+    
     static let identifier = "MemoCell"
     
     let memoView: MemoView = {
@@ -16,9 +23,10 @@ class MemoCell: UICollectionViewCell {
         return view
     }()
     
-    private var editButton: UIButton = {
+    lazy var editButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "Edit"), for: .normal)
+        button.addTarget(self, action: #selector(tapEditButton), for: .touchUpInside)
         
         return button
     }()
@@ -34,8 +42,8 @@ class MemoCell: UICollectionViewCell {
     }
     
     func setUI() {
-//        addSubview(memoView)
         addSubviews([memoView, editButton])
+        editButton.addTarget(self, action: #selector(tapEditButton), for: .touchUpInside)
     }
     
     func setLayout() {
@@ -46,7 +54,15 @@ class MemoCell: UICollectionViewCell {
         editButton.snp.makeConstraints {
             $0.trailing.equalTo(memoView.snp.trailing).offset(-16)
             $0.top.equalTo(memoView.snp.top).offset(16)
-            $0.height.equalTo(10)
         }
     }
+    
+    @objc func tapEditButton(_ sender: UIButton) {
+//        let panModal = PanModalTableViewController()
+//        let view = CalendarViewController()
+//        view.presentPanModal(panModal)
+//        view.modalPresentationStyle = .fullScreen
+        delegate?.didTapEditButton(in: self)
+    }
 }
+

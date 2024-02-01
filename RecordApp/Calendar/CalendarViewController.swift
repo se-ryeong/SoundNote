@@ -213,6 +213,8 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         let item = selectedDateContent[indexPath.row]
         cell.memoView.textView.text = item.memo
         
+        cell.delegate = self
+        
         return cell
     }
     
@@ -232,5 +234,13 @@ extension CalendarViewController: UICollectionViewDelegateFlowLayout {
     // 섹션 사이의 간격 지정, 열 사이의 간격 지정, 아이템들 좌우 간격 지정
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         32
+    }
+}
+
+extension CalendarViewController: MemoCellDelegate {
+    func didTapEditButton(in cell: MemoCell) {
+        let panModal = PanModalTableViewController()
+        presentPanModal(panModal)
+        modalPresentationStyle = .fullScreen
     }
 }
