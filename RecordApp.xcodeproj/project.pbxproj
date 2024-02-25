@@ -13,8 +13,6 @@
 		C35FC9D72B3D68360036F044 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35FC9D62B3D68360036F044 /* SceneDelegate.swift */; };
 		C35FC9DE2B3D68370036F044 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C35FC9DD2B3D68370036F044 /* Assets.xcassets */; };
 		C35FC9E12B3D68370036F044 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C35FC9DF2B3D68370036F044 /* LaunchScreen.storyboard */; };
-		C36FC3682B67BB5B009D47EF /* PanModalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36FC3672B67BB5B009D47EF /* PanModalTableViewController.swift */; };
-		C36FC36A2B68F2EB009D47EF /* PanModalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36FC3692B68F2EB009D47EF /* PanModalTableViewCell.swift */; };
 		C372BD742B4EF30C00A0C4AA /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C372BD732B4EF30C00A0C4AA /* Localizable.xcstrings */; };
 		C372BD762B4EF39700A0C4AA /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C372BD752B4EF39700A0C4AA /* String+.swift */; };
 		C385BFC62B3D6EE500D1FF6F /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385BFC52B3D6EE500D1FF6F /* CalendarViewController.swift */; };
@@ -49,8 +47,6 @@
 		C35FC9DD2B3D68370036F044 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C35FC9E02B3D68370036F044 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C35FC9E22B3D68370036F044 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C36FC3672B67BB5B009D47EF /* PanModalTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalTableViewController.swift; sourceTree = "<group>"; };
-		C36FC3692B68F2EB009D47EF /* PanModalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalTableViewCell.swift; sourceTree = "<group>"; };
 		C372BD732B4EF30C00A0C4AA /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		C372BD752B4EF39700A0C4AA /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		C385BFC52B3D6EE500D1FF6F /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -92,8 +88,6 @@
 			isa = PBXGroup;
 			children = (
 				C32DD6C12B59077F0021A65F /* MemoView.swift */,
-				C36FC3672B67BB5B009D47EF /* PanModalTableViewController.swift */,
-				C36FC3692B68F2EB009D47EF /* PanModalTableViewCell.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -309,7 +303,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C36FC3682B67BB5B009D47EF /* PanModalTableViewController.swift in Sources */,
 				C32DD6C22B59077F0021A65F /* MemoView.swift in Sources */,
 				C3F6286B2B50F9A200B46E38 /* WeatherService.swift in Sources */,
 				C3EA41D32B5539E900ACF334 /* ContentManager.swift in Sources */,
@@ -324,7 +317,6 @@
 				C32DD6C42B59118E0021A65F /* MemoCell.swift in Sources */,
 				C385BFC62B3D6EE500D1FF6F /* CalendarViewController.swift in Sources */,
 				C35FC9D72B3D68360036F044 /* SceneDelegate.swift in Sources */,
-				C36FC36A2B68F2EB009D47EF /* PanModalTableViewCell.swift in Sources */,
 				C3B4DEE12B405FA900660E57 /* UIColor+.swift in Sources */,
 				C3ABC4062B63757500C1DD91 /* Date+.swift in Sources */,
 			);

@@ -88,8 +88,14 @@ class CalendarViewController: UIViewController {
         super.viewWillAppear(animated)
         updateItemsWithMonth()
         loadMemo()
+        updateUI()
         
 //        editButton.isHidden = selectedDateContent.isEmpty
+    }
+    
+    func updateUI() {
+        collectionView.reloadData()
+        calendarView.reloadData()
     }
     
     func setUI() {
@@ -163,6 +169,10 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         selectedDateContent = contentList.filter { $0.createDate?.formatted() == date.formatted() }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM . dd"
+        // TODO : 메모 뷰 dateLabel에 달력에서 선택한 날짜 나오게 하기.
+        
         collectionView.reloadData()
     }
     
@@ -239,8 +249,6 @@ extension CalendarViewController: UICollectionViewDelegateFlowLayout {
 
 extension CalendarViewController: MemoCellDelegate {
     func didTapEditButton(in cell: MemoCell) {
-        let panModal = PanModalTableViewController()
-        presentPanModal(panModal)
-        modalPresentationStyle = .fullScreen
+        
     }
 }
