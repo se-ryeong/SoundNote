@@ -9,11 +9,12 @@ import UIKit
 import PanModal
 
 protocol MemoCellDelegate: AnyObject {
-    func didTapEditButton(in cell: MemoCell)
+    func didTapEditButton(in cell: MemoCell, item: Content)
 }
 
 class MemoCell: UICollectionViewCell {
     weak var delegate: MemoCellDelegate?
+    var contentItem: Content?
     
     static let identifier = "MemoCell"
     
@@ -62,7 +63,8 @@ class MemoCell: UICollectionViewCell {
 //        let view = CalendarViewController()
 //        view.presentPanModal(panModal)
 //        view.modalPresentationStyle = .fullScreen
-        delegate?.didTapEditButton(in: self)
+        guard let contentItem else { return }
+        delegate?.didTapEditButton(in: self, item: contentItem)
     }
 }
 

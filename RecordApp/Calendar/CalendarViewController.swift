@@ -66,7 +66,7 @@ class CalendarViewController: UIViewController {
         
         return pageControl
     }()
-    
+        
     override func viewDidLoad() {
         view.backgroundColor = UIColor(named: "background")
         setUI()
@@ -222,7 +222,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         // contentList에서 memo 속성을 추출하여 문자열로 합침
         let item = selectedDateContent[indexPath.row]
         cell.memoView.textView.text = item.memo
-        
+        cell.contentItem = item
         cell.delegate = self
         
         return cell
@@ -248,7 +248,28 @@ extension CalendarViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension CalendarViewController: MemoCellDelegate {
-    func didTapEditButton(in cell: MemoCell) {
+    func didTapEditButton(in cell: MemoCell, item: Content) {
+        let bottomSheetView = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let edit = UIAlertAction(title: "수정", style: .default) {_ in
+            
+        }
         
+        let delete = UIAlertAction(title: "삭제", style: .destructive) {[weak self] _ in
+            self?.selectedDateContent.removeAll(where: { $0.id == item.id })
+            self?.contentList.removeAll(where: { $0.id == item.id })
+            self?.contentManager.delete(content: item)
+            
+            self?.collectionView.reloadData()
+            self?.calendarView.reloadData()
+        }
+        
+        let cancel = UIAlertAction(title: "취소", style: .cancel) { _ in
+            
+        }
+        
+        bottomSheetView.addAction(edit)
+        bottomSheetView.addAction(delete)
+        bottomSheetView.addAction(cancel)
+        present(bottomSheetView, animated: true)
     }
 }

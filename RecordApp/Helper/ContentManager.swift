@@ -52,4 +52,15 @@ class ContentManager {
             print("Failed create ContentObject: \(error)")
         }
     }
+    
+    func delete(content: Content) {
+        do {
+            let realm = try Realm()
+            try realm.write {
+                realm.delete(content)
+            }
+        } catch {
+            print("Failed create ContentObject: \(error)")
+        }
+    }
 }
