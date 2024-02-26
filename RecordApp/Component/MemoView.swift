@@ -11,7 +11,7 @@ final class MemoView: UIView {
     var textView: UITextView = {
         let view = UITextView()
         view.backgroundColor = .clear
-        view.font = .body1
+        view.font = .body3
         
         return view
     }()

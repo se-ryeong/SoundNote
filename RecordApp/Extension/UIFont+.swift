@@ -21,6 +21,10 @@ extension UIFont {
         return pretendard(size: 16, weight: .medium)
     }
     
+    class var body3: UIFont {
+        return pretendard(size: 16, weight: .regular)
+    }
+    
     class var title2: UIFont {
         return Prata(size: 24, weight: .regular)
     }

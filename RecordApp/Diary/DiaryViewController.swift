@@ -33,7 +33,6 @@ final class DiaryViewController : UIViewController {
         
         return label
     }()
-    
  
     private let weatherImageView: UIImageView = {
         let view = UIImageView()
