@@ -8,10 +8,12 @@
 import UIKit
 
 final class MemoView: UIView {
-    var textView: UITextView = {
+    let textViewPlaceHolder = "녹음하기 버튼을 누르고 말씀해보세요.\n텍스트로도 입력이 가능합니다."
+    lazy var textView: UITextView = {
         let view = UITextView()
         view.backgroundColor = .clear
         view.font = .body3
+        view.text = textViewPlaceHolder
         
         return view
     }()
@@ -61,6 +63,22 @@ final class MemoView: UIView {
             $0.top.equalTo(dateLabel.snp.bottom).offset(12)
             $0.horizontalEdges.equalToSuperview().inset(8)
             $0.bottom.equalToSuperview().offset(-8)
+        }
+    }
+}
+
+extension MemoView: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == textViewPlaceHolder {
+            textView.text = nil
+            textView.textColor = .blue
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = textViewPlaceHolder
+            textView.textColor = .red
         }
     }
 }

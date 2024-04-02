@@ -210,14 +210,14 @@ final class DiaryViewController : UIViewController {
         
         memoView.snp.makeConstraints {
             $0.top.equalTo(subTitleLabel.snp.bottom).offset(24)
-            $0.horizontalEdges.equalToSuperview().inset(32)
+            $0.horizontalEdges.equalToSuperview().inset(24)
         }
         
         recordButton.snp.makeConstraints {
             $0.top.equalTo(memoView.snp.bottom).offset(18)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(130)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-100)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-88)
             $0.height.equalTo(40)
         }
         
