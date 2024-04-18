@@ -20,12 +20,20 @@ class ContentManager {
         }
     }
     
-    func read() -> [Content] {
+    // keyword 매개변수에 값을 넣어주지 않으면 전체검색이 됨
+    func read(keyword: String? = nil) -> [Content] {
         do {
             let realm = try Realm()
             let contents = realm.objects(Content.self)
                 .sorted(byKeyPath: "createDate", ascending: false)
-            return Array(contents)
+            
+            guard let keyword = keyword,
+                  keyword.isNotEmpty else {
+                return Array(contents)
+            }
+            
+            return contents.filter { $0.memo?.contains(keyword ) ?? false }
+            
         } catch {
             print("Failed create ContentObject: \(error)")
         }

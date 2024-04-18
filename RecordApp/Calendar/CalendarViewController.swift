@@ -54,7 +54,7 @@ class CalendarViewController: UIViewController {
         view.backgroundColor = .clear
         view.isPagingEnabled = true
         view.showsHorizontalScrollIndicator = false
-                
+        
         return view
     }()
     
@@ -72,6 +72,7 @@ class CalendarViewController: UIViewController {
         setUI()
         setLayout()
         setDelegate()
+        setKeyboardNotification()
         
         // 초기값 설정
         let dateFormatter = DateFormatter()
@@ -82,6 +83,7 @@ class CalendarViewController: UIViewController {
         selectedDateContent = contentManager.read().filter {
             $0.createDate?.formatted() ?? "" == Date.now.formatted()
         }
+        hideKeyboard()    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,7 +91,6 @@ class CalendarViewController: UIViewController {
         updateItemsWithMonth()
         loadMemo()
         updateUI()
-        
 //        editButton.isHidden = selectedDateContent.isEmpty
     }
     
@@ -99,22 +100,24 @@ class CalendarViewController: UIViewController {
     }
     
     func setUI() {
-        view.addSubviews([collectionView, calendarView, monthLabel, pageControl])
+        view.addSubviews([monthLabel, collectionView, calendarView, pageControl])
     }
     
     func setLayout() {
-        collectionView.snp.makeConstraints {
-//            $0.horizontalEdges.equalToSuperview().inset(32)
-            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(32)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.top.equalTo(calendarView.snp.bottom).offset(8)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-20)
-        }
-        
         calendarView.snp.makeConstraints {
+//            $0.leading.equalTo(view).offset(32)
+//            $0.trailing.equalTo(view)
             $0.horizontalEdges.equalToSuperview().inset(32)
             $0.top.equalTo(monthLabel.snp.bottom).offset(8)
-            $0.height.equalTo(300)
+            $0.height.equalTo(280)
+        }
+        
+        collectionView.snp.makeConstraints {
+            $0.leading.equalTo(view).offset(32)
+            $0.trailing.equalTo(view)
+            $0.top.equalTo(calendarView.snp.bottom).offset(8)
+            $0.bottom.equalTo(pageControl.snp.top).offset(-8)
+//            $0.height.equalTo(400)
         }
         
         monthLabel.snp.makeConstraints {
@@ -124,7 +127,8 @@ class CalendarViewController: UIViewController {
         }
         
         pageControl.snp.makeConstraints {
-            $0.top.equalTo(collectionView.snp.bottom).inset(-8)
+//            $0.bottom.equalToSuperview().offset(-8)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
             $0.centerX.equalToSuperview()
         }
     }
@@ -137,10 +141,9 @@ class CalendarViewController: UIViewController {
     }
     
     private func updateItemsWithMonth() {
-        let year = Calendar.current
-        let month = Calendar.current
         let contents = contentManager.read()
             
+        //MARK: - 5개만 가능한거 제한 없애기
         contentList = contents.prefix(5).map { $0 as Content }
         collectionView.reloadData()
     }
@@ -153,6 +156,7 @@ class CalendarViewController: UIViewController {
         }
         
         collectionView.reloadData()
+        calendarView.reloadData()
     }
 }
 
@@ -222,6 +226,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         // contentList에서 memo 속성을 추출하여 문자열로 합침
         let item = selectedDateContent[indexPath.row]
         cell.memoView.textView.text = item.memo
+        cell.memoView.dateLabel.text = item.createDate?.formattedWithMonthDate()
         cell.contentItem = item
         cell.delegate = self
         
@@ -273,3 +278,4 @@ extension CalendarViewController: MemoCellDelegate {
         present(bottomSheetView, animated: true)
     }
 }
+

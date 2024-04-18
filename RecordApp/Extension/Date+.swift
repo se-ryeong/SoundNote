@@ -8,7 +8,6 @@
 import Foundation
 
 extension Date {
-    
     /// date타입을 String으로 변환해주는 함수
     /// - Returns: /// YYYY-MM-dd 형식 String
     func formatted() -> String {
@@ -25,4 +24,13 @@ extension Date {
         
         return formatter.string(from: self)
     }
+    
+    func formattedWithMonthDate() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM . dd"
+        
+        return formatter.string(from: self)
+    }
 }
+
+

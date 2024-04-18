@@ -11,4 +11,8 @@ extension String {
     var localized: String {
         NSLocalizedString(self, comment: "")
     }
+    
+    var isNotEmpty: Bool {
+        !self.isEmpty
+    }
 }

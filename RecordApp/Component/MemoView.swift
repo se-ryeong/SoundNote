@@ -8,17 +8,25 @@
 import UIKit
 
 final class MemoView: UIView {
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+    }
+    
     let textViewPlaceHolder = "녹음하기 버튼을 누르고 말씀해보세요.\n텍스트로도 입력이 가능합니다."
     lazy var textView: UITextView = {
         let view = UITextView()
         view.backgroundColor = .clear
         view.font = .body3
         view.text = textViewPlaceHolder
-        
+        view.textColor = .gray
+        view.autocorrectionType = .no
+        view.spellCheckingType = .no
+
         return view
     }()
     
-    private var dateLabel: UILabel = {
+     var dateLabel: UILabel = {
         let label = UILabel()
         label.font = .title
         label.textColor = UIColor(named: "Color1")
@@ -34,6 +42,7 @@ final class MemoView: UIView {
 
         setView()
         setUI()
+        setDelegate()
         setLayout()
     }
     
@@ -50,6 +59,10 @@ final class MemoView: UIView {
     
     private func setUI() {
         self.addSubviews([dateLabel, textView])
+    }
+    
+    private func setDelegate() {
+        textView.delegate = self
     }
     
     private func setLayout() {
@@ -71,14 +84,19 @@ extension MemoView: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == textViewPlaceHolder {
             textView.text = nil
-            textView.textColor = .blue
+            textView.textColor = .black
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = textViewPlaceHolder
-            textView.textColor = .red
+            textView.textColor = .gray
         }
+    }
+    
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+//        textView.firstrespo
+        return true
     }
 }

@@ -71,12 +71,13 @@ final class DiaryViewController : UIViewController {
         return button
     }()
         
-    private var searchButton: UIButton = {
+    private lazy var searchButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "Search"), for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         button.layer.cornerRadius = button.layer.frame.size.width/2
         button.backgroundColor = UIColor(named: "Color3")
+        button.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
         
         return button
     }()
@@ -85,6 +86,11 @@ final class DiaryViewController : UIViewController {
     @objc private func calendarButtonTapped(_ sender: UIButton) {
         let calendarVC = CalendarViewController()
         self.navigationController?.pushViewController(calendarVC, animated: true)
+    }
+    
+    @objc private func searchButtonTapped(_ sender: UIButton) {
+        let searchVC = SearchMemoViewController()
+        self.navigationController?.pushViewController(searchVC, animated: true)
     }
     
     override func viewDidLoad() {
@@ -98,6 +104,7 @@ final class DiaryViewController : UIViewController {
         
         speechRecognizer?.delegate = self
         recordButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        self.hideKeyboard()
         
         // MARK: - Temp
         print(Realm.Configuration.defaultConfiguration.fileURL)
@@ -236,7 +243,7 @@ final class DiaryViewController : UIViewController {
         weatherImageView.snp.makeConstraints {
             $0.centerY.equalTo(subTitleLabel)
             $0.trailing.equalToSuperview().offset(-32)
-            $0.size.equalTo(40)
+            $0.size.equalTo(32)
         }
     }
     
