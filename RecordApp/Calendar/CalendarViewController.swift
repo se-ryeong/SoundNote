@@ -75,15 +75,13 @@ class CalendarViewController: UIViewController {
         setKeyboardNotification()
         
         // 초기값 설정
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM"
-        let initialMonth = dateFormatter.string(from: Date())
-        monthLabel.text = initialMonth
+        monthLabel.text = Date.now.formatted(style: .month)
         
         selectedDateContent = contentManager.read().filter {
-            $0.createDate?.formatted() ?? "" == Date.now.formatted()
+            $0.createDate?.formatted(style: .fullDateWithHipen) ?? "" == Date.now.formatted(style: .fullDateWithHipen)
         }
-        hideKeyboard()    
+        
+        hideKeyboard()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -149,10 +147,10 @@ class CalendarViewController: UIViewController {
     }
     
     func loadMemo() {
-        let targetDate = calendarView.currentPage.formattedWithMonth()
+        let targetDate = calendarView.currentPage.formatted(style: .yearMonthWithHipen)
         
-        contentList = contentManager.read().filter{
-            $0.createDate?.formattedWithMonth() ?? ""  == targetDate
+        contentList = contentManager.read().filter {
+            $0.createDate?.formatted(style: .yearMonthWithHipen) ?? ""  == targetDate
         }
         
         collectionView.reloadData()
@@ -162,20 +160,15 @@ class CalendarViewController: UIViewController {
 
 extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM"
-        
-        let monthString = dateFormatter.string(from: calendar.currentPage)
-        monthLabel.text = monthString
+        monthLabel.text = calendar.currentPage.formatted(style: .month)
         
         loadMemo()
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        selectedDateContent = contentList.filter { $0.createDate?.formatted() == date.formatted() }
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM . dd"
-        // TODO : 메모 뷰 dateLabel에 달력에서 선택한 날짜 나오게 하기.
+        selectedDateContent = contentList.filter {
+            $0.createDate?.formatted(style: .fullDateWithHipen) == date.formatted(style: .fullDateWithHipen)
+        }
         
         collectionView.reloadData()
     }
@@ -195,7 +188,8 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     
     // 이벤트 Dot표시 개수
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        if contentList.contains(where: { $0.createDate?.formatted() == date.formatted()
+        if contentList.contains(where: { 
+            $0.createDate?.formatted(style: .fullDateWithHipen) == date.formatted(style: .fullDateWithHipen)
         }) {
             return 1
         } else {
@@ -226,7 +220,8 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         // contentList에서 memo 속성을 추출하여 문자열로 합침
         let item = selectedDateContent[indexPath.row]
         cell.memoView.textView.text = item.memo
-        cell.memoView.dateLabel.text = item.createDate?.formattedWithMonthDate()
+        cell.memoView.textView.isEditable = false
+        cell.memoView.dateLabel.text = item.createDate?.formatted(style: .monthDayWithDot)
         cell.contentItem = item
         cell.delegate = self
         
@@ -255,8 +250,10 @@ extension CalendarViewController: UICollectionViewDelegateFlowLayout {
 extension CalendarViewController: MemoCellDelegate {
     func didTapEditButton(in cell: MemoCell, item: Content) {
         let bottomSheetView = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let edit = UIAlertAction(title: "수정", style: .default) {_ in
-            
+        let edit = UIAlertAction(title: "수정", style: .default) { [weak self] _ in
+            let editVC = EditViewController(content: item)
+            editVC.delegate = self
+            self?.present(editVC, animated: true)
         }
         
         let delete = UIAlertAction(title: "삭제", style: .destructive) {[weak self] _ in
@@ -268,9 +265,7 @@ extension CalendarViewController: MemoCellDelegate {
             self?.calendarView.reloadData()
         }
         
-        let cancel = UIAlertAction(title: "취소", style: .cancel) { _ in
-            
-        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
         
         bottomSheetView.addAction(edit)
         bottomSheetView.addAction(delete)
@@ -279,3 +274,8 @@ extension CalendarViewController: MemoCellDelegate {
     }
 }
 
+extension CalendarViewController: EditViewControllerDelegate {
+    func didFinishEdit() {
+        loadMemo()
+    }
+}

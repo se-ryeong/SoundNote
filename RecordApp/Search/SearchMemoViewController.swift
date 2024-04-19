@@ -69,6 +69,7 @@ extension SearchMemoViewController: UISearchResultsUpdating {
         }
         
         contentList = contentManager.read(keyword: text)
+        
         self.memoListTableView.reloadData()
     }
 }

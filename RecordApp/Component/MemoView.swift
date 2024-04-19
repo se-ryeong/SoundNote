@@ -13,7 +13,8 @@ final class MemoView: UIView {
         super.touchesBegan(touches, with: event)
     }
     
-    let textViewPlaceHolder = "녹음하기 버튼을 누르고 말씀해보세요.\n텍스트로도 입력이 가능합니다."
+    let textViewPlaceHolder = "녹음하기 버튼을 누르고 말씀해보세요.\n녹음 후 타이핑으로 수정이 가능합니다."
+    
     lazy var textView: UITextView = {
         let view = UITextView()
         view.backgroundColor = .clear
@@ -22,24 +23,22 @@ final class MemoView: UIView {
         view.textColor = .gray
         view.autocorrectionType = .no
         view.spellCheckingType = .no
-
+        
         return view
     }()
     
-     var dateLabel: UILabel = {
+    var dateLabel: UILabel = {
         let label = UILabel()
         label.font = .title
         label.textColor = UIColor(named: "Color1")
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MM . dd"
-        label.text = formatter.string(from: Date())
+        label.text = Date.now.formatted(style: .monthDayWithDot)
         
         return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-
+        
         setView()
         setUI()
         setDelegate()
@@ -96,7 +95,6 @@ extension MemoView: UITextViewDelegate {
     }
     
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-//        textView.firstrespo
         return true
     }
 }

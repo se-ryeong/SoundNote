@@ -7,27 +7,50 @@
 
 import Foundation
 
+enum DateStyle {
+    /// "YYYY. MM. dd"
+    case fullDateWithDot
+    /// "YYYY-MM-dd"
+    case fullDateWithHipen
+    /// "YYYY-MM"
+    case yearMonthWithHipen
+    /// "MM. dd"
+    case monthDayWithDot
+    /// MMM
+    case month
+    /// MM월 dd일
+    case monthDay
+    
+    var formatted: String {
+        switch self {
+        case .fullDateWithDot:
+            return "YYYY. MM. dd"
+        case .fullDateWithHipen:
+            return "YYYY-MM-dd"
+        case .yearMonthWithHipen:
+            return "YYYY-MM"
+        case .monthDayWithDot:
+            return "MM. dd"
+        case .month:
+            return "MMM"
+        case .monthDay:
+            return "MM월 dd일"
+        }
+    }
+}
+
 extension Date {
-    /// date타입을 String으로 변환해주는 함수
-    /// - Returns: /// YYYY-MM-dd 형식 String
-    func formatted() -> String {
+    // MARK: - 방법2
+//    func formatted(format: String) -> String {
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = format
+//        
+//        return formatter.string(from: self)
+//    }
+//    
+    func formatted(style: DateStyle) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY-MM-dd"
-        
-        return formatter.string(from: self)
-    }
-    
-    /// YYYY-MM 형식 formatted
-    func formattedWithMonth() -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY-MM"
-        
-        return formatter.string(from: self)
-    }
-    
-    func formattedWithMonthDate() -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MM . dd"
+        formatter.dateFormat = style.formatted
         
         return formatter.string(from: self)
     }

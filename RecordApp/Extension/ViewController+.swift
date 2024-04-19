@@ -29,8 +29,6 @@ extension UIViewController {
             }
         }
     }
-   
-    
     
     // 키보드가 내려갈 때를 감지
     func setKeyboardNotification() {
@@ -50,5 +48,16 @@ extension UIViewController {
                 }
             }
         }
+    }
+    
+    // alert
+    func singleActionAlert(title: String? = nil, message: String? = nil, completion: (()->Void)?) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인", style: .default) { _ in
+            completion?()
+        }
+        alertController.addAction(okAction)
+        
+        present(alertController, animated: true)
     }
 }

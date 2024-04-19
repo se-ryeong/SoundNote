@@ -33,6 +33,7 @@ class MemoListCell: UITableViewCell {
     
     func configureCell(content: Content) {
         memoView.textView.text = content.memo
+        memoView.dateLabel.text = content.createDate?.formatted(style: .fullDateWithDot)
     }
     
     private func setUI() {
@@ -42,9 +43,9 @@ class MemoListCell: UITableViewCell {
     private func setLayout() {
         memoView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(16)
-            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.horizontalEdges.equalToSuperview().inset(16)
             $0.bottom.equalToSuperview()
-            $0.height.equalTo(250)
+            $0.height.equalTo(200)
         }
     }
 }

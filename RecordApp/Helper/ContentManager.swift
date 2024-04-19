@@ -40,16 +40,6 @@ class ContentManager {
         return []
     }
     
-    func filterDate(date: Date) {
-        do {
-            let realm = try Realm()
-//            let filterDates = realm.filter
-        } catch {
-            print("Failed create ContentObject: \(error)")
-        }
-    }
-    
-    
     func update(content: Content, completion: @escaping (Content) -> Void) {
         do {
             let realm = try Realm()

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C31F7CB42BD2B6930012844A /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31F7CB32BD2B6930012844A /* EditViewController.swift */; };
 		C32C329E2BC7AD0F00DC341E /* ViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32C329D2BC7AD0F00DC341E /* ViewController+.swift */; };
 		C32DD6C22B59077F0021A65F /* MemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32DD6C12B59077F0021A65F /* MemoView.swift */; };
 		C32DD6C42B59118E0021A65F /* MemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32DD6C32B59118E0021A65F /* MemoCell.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C31F7CB32BD2B6930012844A /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		C32C329D2BC7AD0F00DC341E /* ViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+.swift"; sourceTree = "<group>"; };
 		C32DD6C12B59077F0021A65F /* MemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoView.swift; sourceTree = "<group>"; };
 		C32DD6C32B59118E0021A65F /* MemoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoCell.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			children = (
 				C385BFC52B3D6EE500D1FF6F /* CalendarViewController.swift */,
 				C32DD6C32B59118E0021A65F /* MemoCell.swift */,
+				C31F7CB32BD2B6930012844A /* EditViewController.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C31F7CB42BD2B6930012844A /* EditViewController.swift in Sources */,
 				C32DD6C22B59077F0021A65F /* MemoView.swift in Sources */,
 				C3F6286B2B50F9A200B46E38 /* WeatherService.swift in Sources */,
 				C3EA41D32B5539E900ACF334 /* ContentManager.swift in Sources */,
