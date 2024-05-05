@@ -26,6 +26,7 @@
 		C385BFD02B3D71E600D1FF6F /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C385BFCF2B3D71E600D1FF6F /* Pretendard-Bold.otf */; };
 		C385BFD22B3D71FA00D1FF6F /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C385BFD12B3D71FA00D1FF6F /* Pretendard-Medium.otf */; };
 		C385BFD42B3D749F00D1FF6F /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385BFD32B3D749F00D1FF6F /* UILabel+.swift */; };
+		C3A5B0712BE7C9F900490EBB /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C3A5B0702BE7C9F900490EBB /* InfoPlist.xcstrings */; };
 		C3ABC4062B63757500C1DD91 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ABC4052B63757500C1DD91 /* Date+.swift */; };
 		C3B4DED12B3E87DE00660E57 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = C3B4DED02B3E87DE00660E57 /* FSCalendar */; };
 		C3B4DED42B3E88CD00660E57 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C3B4DED32B3E88CD00660E57 /* SnapKit */; };
@@ -64,6 +65,8 @@
 		C385BFCF2B3D71E600D1FF6F /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		C385BFD12B3D71FA00D1FF6F /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		C385BFD32B3D749F00D1FF6F /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
+		C3A5B06F2BE4DB0200490EBB /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		C3A5B0702BE7C9F900490EBB /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		C3ABC4052B63757500C1DD91 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		C3B4DEDD2B3E94A900660E57 /* PT Mono Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PT Mono Bold.ttf"; sourceTree = "<group>"; };
 		C3B4DEE02B405FA900660E57 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
@@ -103,6 +106,7 @@
 		C35FC9C82B3D68360036F044 = {
 			isa = PBXGroup;
 			children = (
+				C3A5B06F2BE4DB0200490EBB /* PrivacyInfo.xcprivacy */,
 				C35FC9D32B3D68360036F044 /* RecordApp */,
 				C35FC9D22B3D68360036F044 /* Products */,
 			);
@@ -203,6 +207,7 @@
 				C35FC9D62B3D68360036F044 /* SceneDelegate.swift */,
 				C35FC9D42B3D68360036F044 /* AppDelegate.swift */,
 				C372BD732B4EF30C00A0C4AA /* Localizable.xcstrings */,
+				C3A5B0702BE7C9F900490EBB /* InfoPlist.xcstrings */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -300,6 +305,7 @@
 				C35FC9E12B3D68370036F044 /* LaunchScreen.storyboard in Resources */,
 				C3B4DEDE2B3E94A900660E57 /* PT Mono Bold.ttf in Resources */,
 				C385BFD22B3D71FA00D1FF6F /* Pretendard-Medium.otf in Resources */,
+				C3A5B0712BE7C9F900490EBB /* InfoPlist.xcstrings in Resources */,
 				C385BFD02B3D71E600D1FF6F /* Pretendard-Bold.otf in Resources */,
 				C385BFCE2B3D71D400D1FF6F /* Pretendard-Regular.otf in Resources */,
 				C35FC9DE2B3D68370036F044 /* Assets.xcassets in Resources */,
@@ -473,10 +479,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = RecordApp/RecordApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 347XA53QJK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RecordApp/App/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "감정기록";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치정보";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "녹음하기";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "녹음하기";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -486,7 +496,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = seryeong.RecordApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -506,10 +516,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = RecordApp/RecordApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 347XA53QJK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RecordApp/App/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "감정기록";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치정보";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "녹음하기";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "녹음하기";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -519,7 +533,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = seryeong.RecordApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
