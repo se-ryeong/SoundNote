@@ -8,7 +8,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "EmotionRecord"
+            "value" : "Emotion Record"
           }
         },
         "ko" : {
@@ -44,7 +44,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Location information is required to import weather information."
+            "value" : "Location information is required to import weather information.\nLocation information is required to import weather information."
           }
         },
         "ko" : {
@@ -80,7 +80,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "I need permission to use voice recognition."
+            "value" : "You need permission to use the voice recognition function."
           }
         },
         "ko" : {
